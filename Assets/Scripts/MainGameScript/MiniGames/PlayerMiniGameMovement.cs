@@ -14,8 +14,8 @@ public abstract class PlayerMiniGameMovement : MonoBehaviour
     public Transform playerGraphics;
 
     public float speed;
-    private Rigidbody2D rb;
-    private Vector2 movementInput;
+    protected Rigidbody2D rb;
+    protected Vector2 movementInput;
 
 
     protected virtual void Awake()
@@ -41,10 +41,10 @@ public abstract class PlayerMiniGameMovement : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        //MovePlayer();
+        MovePlayer(); // here or in child class??
     }
 
-    protected void MovePlayer()
+    protected virtual void MovePlayer()
     {
         // Convert to world movement based on player orientation
         worldMovement = (transform.right * movementInput.x) + (transform.up * movementInput.y);
