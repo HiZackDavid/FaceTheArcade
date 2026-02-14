@@ -225,10 +225,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   sprintSpeed: 8
-  RotationSpeed: 1
-  CinemachineCameraTarget: {fileID: 1165341526}
-  TopClamp: 90
-  BottomClamp: -90
+  mouseSensitivity: 0.1
+  cinemachineCameraTarget: {fileID: 1165341526}
+  topClamp: 90
+  bottomClamp: -90
 --- !u!114 &405831199
 MonoBehaviour:
   m_ObjectHideFlags: 0

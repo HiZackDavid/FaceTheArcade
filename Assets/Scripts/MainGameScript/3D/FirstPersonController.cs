@@ -16,11 +16,11 @@ public class FirstPersonController : MonoBehaviour
     
     [Header("Cinemachine")]
     [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
-    public GameObject CinemachineCameraTarget;
+    public GameObject cinemachineCameraTarget;
     [Tooltip("How far in degrees can you move the camera up")]
-    public float TopClamp = 90.0f;
+    public float topClamp = 90.0f;
     [Tooltip("How far in degrees can you move the camera down")]
-    public float BottomClamp = -90.0f;
+    public float bottomClamp = -90.0f;
     
     float _cinemachineTargetPitch;
 
@@ -32,7 +32,7 @@ public class FirstPersonController : MonoBehaviour
     CharacterController _controller;
     FirstPersonInputs _input;
     
-    const float _threshold = 0.01f;
+    const float Threshold = 0.01f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -73,7 +73,7 @@ public class FirstPersonController : MonoBehaviour
 
     void CameraRotation()
     {
-        if (_input.look.sqrMagnitude >= _threshold)
+        if (_input.look.sqrMagnitude >= Threshold)
         {
             float mouseX = _input.look.x * mouseSensitivity;
             float mouseY = _input.look.y * mouseSensitivity;
@@ -81,9 +81,9 @@ public class FirstPersonController : MonoBehaviour
             _cinemachineTargetPitch += mouseY;
             _rotationVelocity = mouseX;
             
-            _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+            _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, bottomClamp, topClamp);
             
-            CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+            cinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
             
             transform.Rotate(Vector3.up * _rotationVelocity);
         }
