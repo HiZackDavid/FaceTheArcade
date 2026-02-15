@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 405831197}
   - component: {fileID: 405831199}
   - component: {fileID: 405831198}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,6 +226,16 @@ MonoBehaviour:
   moveSpeed: 5
   sprintSpeed: 8
   mouseSensitivity: 0.1
+  JumpHeight: 1.2
+  Gravity: -15
+  JumpTimeout: 0.1
+  FallTimeout: 0.15
+  Grounded: 1
+  GroundedOffset: 0.58
+  GroundedRadius: 0.5
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 1
   cinemachineCameraTarget: {fileID: 1165341526}
   topClamp: 90
   bottomClamp: -90
@@ -244,6 +254,7 @@ MonoBehaviour:
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
   sprint: 0
+  jump: 0
   cursorLocked: 1
   cursorIsInputForLook: 1
 --- !u!1 &661759313
@@ -610,7 +621,7 @@ GameObject:
   - component: {fileID: 1044385897}
   - component: {fileID: 1044385896}
   - component: {fileID: 1044385895}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +728,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1165341527}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstPersonCamera Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1086,7 +1097,7 @@ GameObject:
   - component: {fileID: 1369911337}
   - component: {fileID: 1369911336}
   - component: {fileID: 1369911335}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
