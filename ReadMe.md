@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/Language-C%23-239120?logo=c-sharp&logoColor=white" />
   </a>
   <img src="https://img.shields.io/badge/Status-In_Development-yellow" />
-  <img src="https://img.shields.io/badge/ÉTS-LOG--725-red" />
+  <img src="https://img.shields.io/badge/ÉTS-LOG725-red" />
   <hr />
 </div>
 
