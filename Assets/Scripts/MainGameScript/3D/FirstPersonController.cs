@@ -30,7 +30,7 @@ public class FirstPersonController : MonoBehaviour
     [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
     public bool grounded = true;
     [Tooltip("Useful for rough ground")]
-    public float groundedOffset = 0.58f;
+    public float groundedOffset = 0.7f;
     [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
     public float groundedRadius = 0.5f;
     [Tooltip("What layers the character uses as ground")]
@@ -74,8 +74,8 @@ public class FirstPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        JumpWithGravity();
         GroundedCheck();
+        JumpWithGravity();
         Move();
     }
 
@@ -130,6 +130,8 @@ public class FirstPersonController : MonoBehaviour
         grounded = Physics.CheckSphere(spherePosition, groundedRadius, groundLayers, QueryTriggerInteraction.Ignore);
     }
 
+    private float _cinemachineTargetYaw;
+
     void CameraRotation()
     {
         if (_input.look.sqrMagnitude >= Threshold)
@@ -137,14 +139,14 @@ public class FirstPersonController : MonoBehaviour
             float mouseX = _input.look.x * mouseSensitivity;
             float mouseY = _input.look.y * mouseSensitivity;
             
-            _cinemachineTargetPitch += mouseY;
-            _rotationVelocity = mouseX;
-            
+            _cinemachineTargetPitch -= mouseY; 
             _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, bottomClamp, topClamp);
+            
+            _cinemachineTargetYaw += mouseX;
             
             cinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
             
-            transform.Rotate(Vector3.up * _rotationVelocity);
+            transform.rotation = Quaternion.Euler(0.0f, _cinemachineTargetYaw, 0.0f);
         }
     }
 
