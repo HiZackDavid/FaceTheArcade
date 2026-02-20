@@ -1,0 +1,127 @@
+@startuml
+' PlantUML généré automatiquement pour les classes dans Assets/Scripts/MainGameScript
+skinparam classAttributeIconSize 0
+
+' Unity CLasses
+class MonoBehaviour {
+    + Awake()
+    + Start()
+    + Update()
+    + FixedUpdate()
+}
+
+
+' Interfaces
+interface IPlayerRotationStrategy {
+    +void RotatePlayer()
+}
+
+' Abstract / base classes
+abstract class PlayerMiniGameMovement {
+    - PlayerControls playerControls
+    - Vector2 worldMovement
+    + Camera camera
+    - Vector2 mousePosition
+    + Transform playerGraphics
+    + float speed
+    - Rigidbody2D rb
+    - Vector2 movementInput
+
+    + Awake()
+    + Start()
+    + Update()
+    + FixedUpdate()
+    + MovePlayer()
+    + OnDisable()
+}
+
+' Concrete implementations (MiniGames)
+class PlayerMouvementRotationMouse {
+    + RotatePlayer()
+}
+class PlayerMouvementRotationDirection {
+    + RotatePlayer()
+}
+class PlayerMouvementRotationSprites {
+    - Animator animator
+    + Start()
+    + Update()
+    + FixedUpdate()
+    + MovePlayer()
+    + RotatePlayer()
+}
+
+' First-person related classes
+class FirstPersonInputs {
+    + Vector2 move
+    + Vector2 look
+    + bool sprint
+    + bool jump
+    + bool cursorLocked
+    + bool cursorIsInputForLook
+
+    + OnMove()
+    + OnSprint()
+    + OnJump()
+    + OnLook()
+    + MoveInput(Vector2)
+    + LookInput(Vector2)
+    + SprintInput(bool)
+    + JumpInput(bool)
+}
+
+class FirstPersonController {
+    + float moveSpeed
+    + float sprintSpeed
+    + float mouseSensitivity
+    + float jumpHeight
+    + float gravity
+    + float jumpTimeout
+    + float fallTimeout
+    + bool grounded
+    + float groundedOffset
+    + float groundedRadius
+    + LayerMask groundLayers
+    + GameObject cinemachineCameraTarget
+
+    + Start()
+    + Update()
+    + LateUpdate()
+    + Move()
+    + JumpWithGravity()
+    + GroundedCheck()
+    + CameraRotation()
+}
+
+
+' InputActions
+class PlayerControls
+
+
+' Implémentations d'interface
+IPlayerRotationStrategy <|.. PlayerMouvementRotationMouse
+IPlayerRotationStrategy <|.. PlayerMouvementRotationDirection
+IPlayerRotationStrategy <|.. PlayerMouvementRotationSprites
+
+' Héritages
+MonoBehaviour <|- PlayerMiniGameMovement
+
+PlayerMiniGameMovement <|- PlayerMouvementRotationMouse
+PlayerMiniGameMovement <|- PlayerMouvementRotationDirection
+PlayerMiniGameMovement <|- PlayerMouvementRotationSprites
+
+' Dépendances
+PlayerControls <- PlayerMiniGameMovement
+
+
+' Associations / dépendances (composition / utilisation)
+/'PlayerMiniGameMovement ..> PlayerControls : uses'/
+/'PlayerMiniGameMovement ..> Rigidbody2D : uses'/
+/'PlayerMiniGameMovement ..> Camera : uses'/
+/'PlayerMiniGameMovement ..> Transform : uses'/
+
+FirstPersonController ..> FirstPersonInputs : gets component
+FirstPersonController ..> PlayerInput : gets component
+FirstPersonController ..> CharacterController : gets component
+
+@enduml
