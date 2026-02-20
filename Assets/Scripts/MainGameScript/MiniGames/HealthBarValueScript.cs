@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthLifeValueScript : MonoBehaviour
+public class HealthBarValueScript : MonoBehaviour
 {
     public CharacterHealthScript characterHealthScript;
     public Slider slider;
