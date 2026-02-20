@@ -385,8 +385,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8232332159539971220}
+  - component: {fileID: 7545814277370901553}
   m_Layer: 0
-  m_Name: AnomalyLifeBar
+  m_Name: AnomalyHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -413,6 +414,20 @@ RectTransform:
   m_AnchoredPosition: {x: 146.5, y: -30}
   m_SizeDelta: {x: -307, y: 40.7}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7545814277370901553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540446514372503692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e673669dfa835d4997e9f1b4c98c1f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterHealthScript: {fileID: 0}
+  slider: {fileID: 868904855677535447}
 --- !u!1 &641682016656825896
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,8 +986,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8563851471122035755}
+  - component: {fileID: 2893760833358380972}
   m_Layer: 0
-  m_Name: PlayerLifeBar
+  m_Name: PlayerHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -999,6 +1015,20 @@ RectTransform:
   m_AnchoredPosition: {x: -146.5, y: -30}
   m_SizeDelta: {x: -307, y: 40.7}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2893760833358380972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2436792602161772077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e673669dfa835d4997e9f1b4c98c1f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterHealthScript: {fileID: 0}
+  slider: {fileID: 2240586273956587520}
 --- !u!1 &2492369310964718854
 GameObject:
   m_ObjectHideFlags: 0

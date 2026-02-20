@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 8748216857866706092}
   - component: {fileID: 2819043976689510275}
   - component: {fileID: 8913433166769004710}
+  - component: {fileID: 219250789333500377}
   m_Layer: 0
   m_Name: PlayerMoonAdventureStyle
   m_TagString: Untagged
@@ -247,3 +248,15 @@ MonoBehaviour:
   camera: {fileID: 0}
   playerGraphics: {fileID: 2187838533577231053}
   speed: 0.2
+--- !u!114 &219250789333500377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112174647705388527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e7706eca1d30d4eb33ad52c23e5d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

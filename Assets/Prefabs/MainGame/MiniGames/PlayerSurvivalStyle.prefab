@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9018583409551070097}
   - component: {fileID: 8050252774949652874}
   - component: {fileID: 8423647297069894667}
+  - component: {fileID: 8994527558940573497}
   m_Layer: 0
   m_Name: PlayerSurvivalStyle
   m_TagString: Untagged
@@ -76,6 +77,18 @@ MonoBehaviour:
   camera: {fileID: 0}
   playerGraphics: {fileID: 6574438465817198272}
   speed: 0.2
+--- !u!114 &8994527558940573497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420754379430686961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e7706eca1d30d4eb33ad52c23e5d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6477570809864478320
 GameObject:
   m_ObjectHideFlags: 0
