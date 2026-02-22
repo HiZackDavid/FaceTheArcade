@@ -54,6 +54,8 @@ public class Timer : MonoBehaviour
         if (canCount && !paused && timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
+            if (timeLeft <= 0)
+                timeLeft = 0.0f;
 
             if (notifyEachSecond)
             {
@@ -65,7 +67,7 @@ public class Timer : MonoBehaviour
                 }
             }
 
-        } else if (timeLeft <= 0)
+        } else if (timeLeft == 0)
         {
             OneTimerEnd();
         }

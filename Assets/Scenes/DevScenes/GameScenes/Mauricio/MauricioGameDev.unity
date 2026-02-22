@@ -1644,7 +1644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1416672422}
   dayTimer: {fileID: 6368324840465379128}
-  cheatCodeAmount: 0
+  cheatCodeAmount: 2
 --- !u!4 &1915050585
 Transform:
   m_ObjectHideFlags: 0
@@ -1907,11 +1907,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
       propertyPath: oneShot
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
       propertyPath: waitTime
-      value: 90
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
       propertyPath: autoStart
