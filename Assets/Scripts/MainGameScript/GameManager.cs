@@ -5,8 +5,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] private GameObject player;
-
     [SerializeField] private Timer dayTimer;
 
     [SerializeField] private int cheatCodeAmount = 0;

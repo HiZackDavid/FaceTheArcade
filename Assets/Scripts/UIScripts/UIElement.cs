@@ -18,6 +18,7 @@ public class UIElement : MonoBehaviour
 
     public void RequestPlay()
     {
+        Debug.Log("Hola");
         UIManager.instace.OnRequestPlay();
     }
 
