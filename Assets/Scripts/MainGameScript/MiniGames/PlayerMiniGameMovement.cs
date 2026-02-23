@@ -3,58 +3,88 @@ using UnityEngine;
 public abstract class PlayerMiniGameMovement : MonoBehaviour
 {
     protected PlayerControls playerControls;
-    protected Vector2 worldMovement;
 
-    // Rotate player graphics in mouse direction
-    // Reference to the main camera, can be assigned in the Inspector
-    public Camera camera;
-    protected Vector2 mousePosition;
+    // --- Compat (tes scripts s'en servent) ---
+    protected Vector2 worldMovement;     // direction finale utilisée pour bouger / orienter
+    protected Vector2 mousePosition;     // position souris (world si camera assignée)
 
-    // Player graphics GameObject
-    public Transform playerGraphics;
+    [Header("References")]
+    public Camera camera;                // optionnel
+    public Transform playerGraphics;     // optionnel
 
-    public float speed;
+    [Header("Movement")]
+    public float speed = 5f;
+    [Range(0f, 0.5f)] public float deadzone = 0.2f;
+    public bool lockTo4Directions = true;
+
     protected Rigidbody2D rb;
     protected Vector2 movementInput;
-
 
     protected virtual void Awake()
     {
         playerControls = new PlayerControls();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // Enable the control scheme    
+        // Top-down 2D propre
+        rb.gravityScale = 0f;
+        rb.freezeRotation = true;
+        rb.linearDamping = 0f;
+
         playerControls.MiniGameMovement.Enable();
-        
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
+        // Pas de normalized ici (garde la force du stick)
         movementInput = playerControls.MiniGameMovement.Move.ReadValue<Vector2>().normalized;
+        movementInput.x *= -1.0f; // Inversion de l'axe horizontal pour correspondre à la direction du stick
+
+        if (Mathf.Abs(movementInput.x) > 0.1f)
+            Debug.Log($"MoveX = {movementInput.x}");
+
+        // mousePosition pour tes scripts Mouse rotation
+        if (camera != null)
+            mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
+        else
+            mousePosition = Input.mousePosition; // fallback
     }
 
     protected virtual void FixedUpdate()
     {
-        MovePlayer(); // here or in child class??
+        MovePlayer();
     }
 
     protected virtual void MovePlayer()
     {
-        // Convert to world movement based on player orientation
-        worldMovement = (transform.right * movementInput.x) + (transform.up * movementInput.y);
+        Vector2 input = movementInput;
+
+        if (input.sqrMagnitude < deadzone * deadzone)
+        {
+            worldMovement = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        input = Vector2.ClampMagnitude(input, 1f);
+
+        if (lockTo4Directions)
+        {
+            if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
+                input = new Vector2(Mathf.Sign(input.x), 0f);
+            else
+                input = new Vector2(0f, Mathf.Sign(input.y));
+        }
+
+        worldMovement = input;
         rb.linearVelocity = worldMovement * speed;
     }
-
 
     protected virtual void OnDisable()
     {
         playerControls.Disable();
     }
-
 }
