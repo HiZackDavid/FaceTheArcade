@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-guid: c9987513481982b4da5422edf0acd5c0
-AssetOrigin:
-  serializedVersion: 1
-  productId: 296458
-  packageName: Dungeon Tale - Fantasy RPG Sprites FX Tileset
-  packageVersion: 1.0
-  assetPath: Assets/Tileset/Dungeon Tale/Assets/Animations/Torch.ase
-  uploadId: 693043
+guid: 6dcdc60eff6718f4880a100909896c37
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 16
+    spritePixelsToUnits: 100
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -105,7 +98,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638493930716527819
+  platformSettingsDirtyTick: 0
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -130,7 +123,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Torch_Frame_0
+  - name: Coin_Frame_0
     originalName: 
     pivot: {x: 0.5, y: -0.3}
     alignment: 9
@@ -138,32 +131,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 33
-      y: 25
-      width: 6
-      height: 10
-    spriteID: 6ac2cb4fbf74fd34e945ae7ba3ec162b
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 33, y: 25}
-  - name: Torch_Frame_1
-    originalName: 
-    pivot: {x: 0.5714286, y: -0.23076923}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
       x: 4
       y: 4
-      width: 7
-      height: 13
-    spriteID: 02da792d38d40bd4387174be9f85a442
+      width: 10
+      height: 10
+    spriteID: 9ad434ae634fe114b839abf1488fea42
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -172,40 +144,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Torch_Frame_2
+  - name: Coin_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -0.21428572}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 19
-      y: 4
-      width: 6
-      height: 14
-    spriteID: 2bc466829d4d15241b541afac1546c84
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 19, y: 4}
-  - name: Torch_Frame_3
-    originalName: 
-    pivot: {x: 0.5, y: -0.2}
+    pivot: {x: 0.5, y: -0.3}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
-      y: 25
-      width: 6
-      height: 15
-    spriteID: c393e74b14859724085769b1ecae72d5
+      y: 22
+      width: 10
+      height: 10
+    spriteID: 8549c70e4eda1524fbcd4df03a8c12b4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -213,20 +164,20 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 25}
-  - name: Torch_Frame_4
+    uvTransform: {x: 4, y: 22}
+  - name: Coin_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: -0.23076923}
+    pivot: {x: 0.5, y: -0.3}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 19
-      y: 26
-      width: 6
-      height: 13
-    spriteID: 177503e5fa7b03e4c90101922580688a
+      x: 22
+      y: 4
+      width: 8
+      height: 10
+    spriteID: 3501c49c663cbfb47b49d71fdf036307
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -234,20 +185,104 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 19, y: 26}
-  - name: Torch_Frame_5
+    uvTransform: {x: 22, y: 4}
+  - name: Coin_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: -0.25}
+    pivot: {x: 0.5, y: -0.3}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 22
+      y: 40
+      width: 6
+      height: 10
+    spriteID: c34933d0eb97e3e45a26914e6f19bbca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 22, y: 40}
+  - name: Coin_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: -0.3}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 22
+      width: 4
+      height: 10
+    spriteID: 846c8fa8852925347a5fd47ed428d524
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 22}
+  - name: Coin_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: -0.3}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 4
+      width: 6
+      height: 10
+    spriteID: 84b26ba9733b2e14ab851a731a4d0917
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 4}
+  - name: Coin_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: -0.3}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 22
+      y: 22
+      width: 8
+      height: 10
+    spriteID: 3bdb3a5b74e9d37469ee3d8bd2a942c6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 22, y: 22}
+  - name: Coin_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: -0.3}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
-      y: 48
-      width: 6
-      height: 12
-    spriteID: b2014456a0b265247ad0619fdbae6bc4
+      y: 40
+      width: 10
+      height: 10
+    spriteID: 95aa2b46f3789f44bb3e2fd439fbc9fb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -255,59 +290,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 48}
-  - name: Torch_Frame_6
-    originalName: 
-    pivot: {x: 0.5, y: -0.23076923}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 19
-      y: 47
-      width: 6
-      height: 13
-    spriteID: 74d8f96324631a14bab0e1cedec4c483
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 19, y: 47}
-  - name: Torch_Frame_7
-    originalName: 
-    pivot: {x: 0.5, y: -0.23076923}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 33
-      y: 4
-      width: 6
-      height: 13
-    spriteID: 0e7ef8665ddf40a4096f274191ecc7c3
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 33, y: 4}
+    uvTransform: {x: 4, y: 40}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 795277336
+      value0: 1367191875
       value1: 0
       value2: 0
       value3: 0
-    guid: 795277336
-    name: Torch
+    guid: 1367191875
+    name: Coin
     layerFlags: 0
     layerType: 0
     blendMode: 0
@@ -316,29 +309,29 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 5
+        x: 3
         y: 3
-        width: 6
+        width: 10
         height: 10
-      spriteId: 6ac2cb4fbf74fd34e945ae7ba3ec162b
+      spriteId: 9ad434ae634fe114b839abf1488fea42
     - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 4
+        x: 3
         y: 3
-        width: 7
-        height: 13
-      spriteId: 02da792d38d40bd4387174be9f85a442
+        width: 10
+        height: 10
+      spriteId: 8549c70e4eda1524fbcd4df03a8c12b4
     - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
-        x: 5
+        x: 4
         y: 3
-        width: 6
-        height: 14
-      spriteId: 2bc466829d4d15241b541afac1546c84
+        width: 8
+        height: 10
+      spriteId: 3501c49c663cbfb47b49d71fdf036307
     - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
@@ -346,17 +339,17 @@ ScriptedImporter:
         x: 5
         y: 3
         width: 6
-        height: 15
-      spriteId: c393e74b14859724085769b1ecae72d5
+        height: 10
+      spriteId: c34933d0eb97e3e45a26914e6f19bbca
     - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
-        x: 5
+        x: 6
         y: 3
-        width: 6
-        height: 13
-      spriteId: 177503e5fa7b03e4c90101922580688a
+        width: 4
+        height: 10
+      spriteId: 846c8fa8852925347a5fd47ed428d524
     - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
@@ -364,91 +357,31 @@ ScriptedImporter:
         x: 5
         y: 3
         width: 6
-        height: 12
-      spriteId: b2014456a0b265247ad0619fdbae6bc4
+        height: 10
+      spriteId: 84b26ba9733b2e14ab851a731a4d0917
     - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
-        x: 5
+        x: 4
         y: 3
-        width: 6
-        height: 13
-      spriteId: 74d8f96324631a14bab0e1cedec4c483
+        width: 8
+        height: 10
+      spriteId: 3bdb3a5b74e9d37469ee3d8bd2a942c6
     - name: Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
-        x: 5
+        x: 3
         y: 3
-        width: 6
-        height: 13
-      spriteId: 0e7ef8665ddf40a4096f274191ecc7c3
+        width: 10
+        height: 10
+      spriteId: 95aa2b46f3789f44bb3e2fd439fbc9fb
     linkedCells: []
     parentIndex: -1
-  platformSettings:
-  - name: DefaultTexturePlatform
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Server
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Android
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: WebGL
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
+  platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 24}
+  canvasSize: {x: 16, y: 16}
   previousTextureSize: {x: 64, y: 64}

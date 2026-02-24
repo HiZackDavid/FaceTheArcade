@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-guid: 61ed7a01b532c17489ff08570db6ce7f
-AssetOrigin:
-  serializedVersion: 1
-  productId: 296458
-  packageName: Dungeon Tale - Fantasy RPG Sprites FX Tileset
-  packageVersion: 1.0
-  assetPath: Assets/Tileset/Dungeon Tale/Assets/Animations/Hero.ase
-  uploadId: 693043
+guid: c714e3c1af0336348ac1e5fdd5772845
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
