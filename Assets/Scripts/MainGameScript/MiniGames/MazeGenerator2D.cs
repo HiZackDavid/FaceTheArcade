@@ -402,7 +402,9 @@ public class MazeGenerator2D : MonoBehaviour
             Vector3 jitter = Vector3.zero;
             // jitter = new Vector3(((float)rng.NextDouble() - 0.5f) * 0.1f, ((float)rng.NextDouble() - 0.5f) * 0.1f, 0f);
 
-            player.position = world + playerOffset + jitter;
+            Vector3 p = world + playerOffset + jitter;
+            p.z = player.position.z; // garde son Z actuel (ou mets 0)
+            player.position = p;
             return; // Spawn réussi, on sort
         }
 

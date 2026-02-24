@@ -40,6 +40,15 @@ public class EnemyMazeAI : MonoBehaviour
     [Header("Debug")]
     public bool debugLogs = false; // Active les logs dans la console pour visualiser l'état de l'IA en temps réel
 
+    float ScaleSafe() => Mathf.Max(0.0001f, grid.WorldScale);
+
+    // vitesse monde corrigée
+    float SpeedWorld() => moveSpeed / ScaleSafe();
+
+    // seuils en monde (plus petit quand le monde est réduit)
+    float ReachedWorld() => reachedCellDist * ScaleSafe();
+    float StopWorld() => stopDistance * ScaleSafe();
+
     // Machine à états simple : l'ennemi est soit en train d'errer, soit en train de poursuivre le joueur
     enum State { Wander, Chase }
     State state = State.Wander; // On commence toujours en mode errance
@@ -242,14 +251,14 @@ public class EnemyMazeAI : MonoBehaviour
             Vector2 target = vision.player.position;
 
             // Si on est assez proche du joueur, on s'arrête (pour ne pas le traverser)
-            if (Vector2.Distance(rb.position, target) <= stopDistance)
+            if (Vector2.Distance(rb.position, target) <= StopWorld())
             {
                 rb.linearVelocity = Vector2.zero;
                 return;
             }
 
             // Déplacement en ligne droite vers le joueur avec MoveTowards
-            Vector2 next = Vector2.MoveTowards(rb.position, target, moveSpeed * Time.fixedDeltaTime);
+            Vector2 next = Vector2.MoveTowards(rb.position, target, SpeedWorld() * Time.fixedDeltaTime);
             rb.MovePosition(next);
             return;
         }
@@ -267,7 +276,7 @@ public class EnemyMazeAI : MonoBehaviour
         Vector2 targetPos = grid.CellCenterWorld(targetCell);
 
         // Si on est assez proche du centre de la cellule courante, on passe à la suivante
-        if (Vector2.Distance(rb.position, targetPos) <= reachedCellDist && pathIndex < path.Count - 1)
+        if (Vector2.Distance(rb.position, targetPos) <= ReachedWorld() && pathIndex < path.Count - 1)
             pathIndex++;
 
         // Déplacement progressif vers le centre de la cellule cible

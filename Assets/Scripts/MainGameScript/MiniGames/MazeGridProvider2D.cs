@@ -44,4 +44,13 @@ public class MazeGridProvider2D : MonoBehaviour
     /// Délègue au MazeGenerator2D qui maintient la grille walkable.
     /// </summary>
     public bool IsWalkable(Vector3Int cell) => maze.IsWalkable(cell.x, cell.y);
+
+    public float WorldScale
+    {
+        get
+        {
+            // scale réel du tilemap dans le monde (si World est réduit)
+            return floorTilemap.transform.lossyScale.x;
+        }
+    }
 }
