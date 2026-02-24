@@ -30,7 +30,7 @@ public abstract class PlayerMiniGameMovement : MonoBehaviour
 
         // Enable the control scheme    
         playerControls.MiniGameMovement.Enable();
-        
+
     }
 
     // Update is called once per frame

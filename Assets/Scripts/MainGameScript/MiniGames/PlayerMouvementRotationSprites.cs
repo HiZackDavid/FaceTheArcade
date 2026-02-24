@@ -21,6 +21,7 @@ public class PlayerMouvementRotationSprites : PlayerMiniGameMovement, IPlayerRot
     {
         MovePlayer();
         RotatePlayer();
+        Debug.Log($"movementInput = {movementInput}");
     }
 
     protected override void MovePlayer()
