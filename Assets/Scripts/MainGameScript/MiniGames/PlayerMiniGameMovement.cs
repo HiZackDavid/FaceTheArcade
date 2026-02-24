@@ -27,10 +27,6 @@ public abstract class PlayerMiniGameMovement : MonoBehaviour
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        // Enable the control scheme    
-        playerControls.MiniGameMovement.Enable();
-
     }
 
     // Update is called once per frame
@@ -49,6 +45,12 @@ public abstract class PlayerMiniGameMovement : MonoBehaviour
         // Convert to world movement based on player orientation
         worldMovement = (transform.right * movementInput.x) + (transform.up * movementInput.y);
         rb.linearVelocity = worldMovement * speed;
+    }
+
+    protected virtual void OnEnable()
+    {
+        // Enable the control scheme  
+        playerControls.MiniGameMovement.Enable();
     }
 
 
