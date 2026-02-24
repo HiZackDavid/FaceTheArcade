@@ -27,6 +27,13 @@ public abstract class PlayerMiniGameMovement : MonoBehaviour
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+<<<<<<< BugFix-mouvement-joueur-minijeux-OnEnable-InputActions
+=======
+
+        // Enable the control scheme    
+        playerControls.MiniGameMovement.Enable();
+
+>>>>>>> main
     }
 
     // Update is called once per frame

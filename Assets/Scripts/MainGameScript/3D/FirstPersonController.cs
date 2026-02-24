@@ -54,6 +54,8 @@ public class FirstPersonController : MonoBehaviour
     private float _jumpTimeoutDelta;
     private float _fallTimeoutDelta;
 
+    private float _cinemachineTargetYaw;
+
     private PlayerInput _playerInput;
     CharacterController _controller;
     FirstPersonInputs _input;
@@ -69,6 +71,8 @@ public class FirstPersonController : MonoBehaviour
 
         _jumpTimeoutDelta = jumpTimeout;
         _fallTimeoutDelta = fallTimeout;
+
+        _cinemachineTargetYaw = transform.eulerAngles.y;
     }
 
     // Update is called once per frame
@@ -130,23 +134,23 @@ public class FirstPersonController : MonoBehaviour
         grounded = Physics.CheckSphere(spherePosition, groundedRadius, groundLayers, QueryTriggerInteraction.Ignore);
     }
 
-    private float _cinemachineTargetYaw;
-
     void CameraRotation()
     {
         if (_input.look.sqrMagnitude >= Threshold)
         {
+
             float mouseX = _input.look.x * mouseSensitivity;
             float mouseY = _input.look.y * mouseSensitivity;
-            
+
             _cinemachineTargetPitch -= mouseY; 
             _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, bottomClamp, topClamp);
             
             _cinemachineTargetYaw += mouseX;
             
             cinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
-            
+
             transform.rotation = Quaternion.Euler(0.0f, _cinemachineTargetYaw, 0.0f);
+            
         }
     }
 
