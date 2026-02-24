@@ -137,7 +137,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0140834, y: 1.0186079}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!50 &4123172382849111626
 Rigidbody2D:
@@ -193,11 +193,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8506216200578577044}
-  sightRadius: 0.4
-  aggroRadius: 0.3
+  sightRadius: 4
+  aggroRadius: 7
   wallsMask:
     serializedVersion: 2
     m_Bits: 128
+  grid: {fileID: 1446425114574921578}
 --- !u!114 &8766899608505638400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,14 +213,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 1446425114574921578}
   vision: {fileID: 1363975427551939133}
-  moveSpeed: 0.04
-  reachedCellDist: 0.005
-  repathInterval: 0.035
-  wanderRepathInterval: 0.05
-  minWanderDistance: 0.4
-  wanderPickTries: 20
-  stopDistance: 0.035
-  debugLogs: 1
+  moveSpeed: 0.08
+  reachedCellDist: 0.1
+  repathInterval: 0.35
+  wanderRepathInterval: 0.4
+  minWanderDistance: 2
+  wanderPickTries: 200
+  stopDistance: 0.35
+  debugLogs: 0
 --- !u!114 &6687739981210571571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,7 +1068,7 @@ MonoBehaviour:
   floorTile: {fileID: 11400000, guid: c4eeabaece92c474fa0c71f9c780ef13, type: 2}
   wallTile: {fileID: 11400000, guid: ac457c67e2aab85458608996871fb8ee, type: 2}
   player: {fileID: 8506216200578577044}
-  playerOffset: {x: 0, y: 0, z: 0}
+  playerOffset: {x: 0, y: 0, z: -1}
   floorTilemap: {fileID: 390084126734897042}
   enemy: {fileID: 5831509013284863165}
 --- !u!114 &1446425114574921578
@@ -3843,6 +3844,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8692285515447563351}
     m_Modifications:
+    - target: {fileID: 1594788256944170749, guid: 31fe187e1c6b24747b2ece791525d7c5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2187838533577231053, guid: 31fe187e1c6b24747b2ece791525d7c5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -3873,7 +3878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8748216857866706092, guid: 31fe187e1c6b24747b2ece791525d7c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: -0.01000005
       objectReference: {fileID: 0}
     - target: {fileID: 8748216857866706092, guid: 31fe187e1c6b24747b2ece791525d7c5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3910,6 +3915,10 @@ PrefabInstance:
     - target: {fileID: 9112174647705388527, guid: 31fe187e1c6b24747b2ece791525d7c5, type: 3}
       propertyPath: m_Name
       value: PlayerMoonAdventureStyle
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112174647705388527, guid: 31fe187e1c6b24747b2ece791525d7c5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -23,6 +23,8 @@ public class EnemyVision2D : MonoBehaviour
     [Header("Obstacles")]
     public LayerMask wallsMask;         // LayerMask des murs pour le raycast (seul le layer "Walls" bloque la vision)
 
+    public MazeGridProvider2D grid; // assigne le même provider dans l'inspector
+
     /// <summary>
     /// Vérifie si le joueur est dans la zone d'aggro (cercle de rayon aggroRadius).
     /// Pas de vérification d'obstacles : c'est une simple comparaison de distance.
@@ -30,8 +32,10 @@ public class EnemyVision2D : MonoBehaviour
     /// </summary>
     public bool InAggroRange()
     {
-        if (!player) return false; // Sécurité : pas de joueur assigné
-        return Vector2.Distance(transform.position, player.position) <= aggroRadius;
+        if (!player || grid == null) return false;
+        float s = Mathf.Max(0.0001f, grid.WorldScale);
+        float r = aggroRadius * s; // rayon monde = rayon logique * scale
+        return Vector2.Distance(transform.position, player.position) <= r;
     }
 
     /// <summary>
@@ -43,18 +47,17 @@ public class EnemyVision2D : MonoBehaviour
     /// </summary>
     public bool CanSeePlayerLOS()
     {
-        if (!player) return false; // Sécurité
+        if (!player || grid == null) return false;
 
-        Vector2 a = transform.position; // Position de l'ennemi
-        Vector2 b = player.position;    // Position du joueur
+        float s = Mathf.Max(0.0001f, grid.WorldScale);
+        float r = sightRadius * s;
 
-        // Étape 1 : vérifier la distance (pas la peine de raycast si trop loin)
+        Vector2 a = transform.position;
+        Vector2 b = player.position;
         float dist = Vector2.Distance(a, b);
-        if (dist > sightRadius) return false;
+        if (dist > r) return false;
 
-        // Étape 2 : lancer un raycast (linecast) entre l'ennemi et le joueur
-        // Si le raycast touche un collider (= un mur), la vision est bloquée
         var hit = Physics2D.Linecast(a, b, wallsMask);
-        return hit.collider == null; // null = pas de mur entre les deux = on voit le joueur
+        return hit.collider == null;
     }
 }
