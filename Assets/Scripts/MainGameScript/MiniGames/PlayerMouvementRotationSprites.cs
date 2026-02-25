@@ -39,9 +39,7 @@ public class PlayerMouvementRotationSprites : PlayerMiniGameMovement, IPlayerRot
         // Animation for Pokemon style
         animator.SetFloat("Horizontal", movementInput.x);
         animator.SetFloat("Vertical", movementInput.y);
-       
-
+        
         animator.SetFloat("Speed", movementInput.sqrMagnitude);
-
     }
 }
