@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9207349551202811548}
   - component: {fileID: 3783536679592088167}
-  - component: {fileID: 2459536531188806391}
+  - component: {fileID: 8738889216374326272}
   - component: {fileID: 2284909982858540157}
   m_Layer: 0
   m_Name: EnemySurvivalStyle
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2459536531188806391
+--- !u!114 &8738889216374326272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,12 +71,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2970391712404576654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38a5cd9dc4f94f4f88265f8e9026219, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fb06e9c97e5095458f2fe074efbe47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
-  playerGraphics: {fileID: 8239620733191038028}
-  speed: 0.2
+  player: {fileID: 0}
 --- !u!114 &2284909982858540157
 MonoBehaviour:
   m_ObjectHideFlags: 0
