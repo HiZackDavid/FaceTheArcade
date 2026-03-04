@@ -1,14 +1,31 @@
+using System;
 using UnityEngine;
 
 public class EnemySurvivalMouvementScript : MonoBehaviour
 {
+    private Rigidbody2D _rb;
+    private float _speed;
     public Transform player;
-    public float speed;
-    
-    // Update is called once per frame
+
+    public float Speed
+    {
+        set => _speed = value;
+    }
+
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
+
     void FixedUpdate()
     {
+        MovePlayer();
         RotateEnemy();
+    }
+    
+    private void MovePlayer()
+    {
+        _rb.linearVelocity = _speed * transform.up;
     }
     
     private void RotateEnemy()
@@ -20,4 +37,5 @@ public class EnemySurvivalMouvementScript : MonoBehaviour
         float angle = Mathf.Atan2(rotateDirection.y, rotateDirection.x) * Mathf.Rad2Deg - 90f; // Subtract 90 degrees, Y axis will look at player
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
+    
 }
