@@ -1371,18 +1371,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2D-MiniGame1
       objectReference: {fileID: 0}
-    - target: {fileID: 8874733064591278367, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874733064591278367, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8874733064591278367, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8988604133088592773, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.086
