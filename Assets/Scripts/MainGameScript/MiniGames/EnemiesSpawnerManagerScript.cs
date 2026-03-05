@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class EnemiesSpawnerManagerScript : MonoBehaviour
 {
-    public EnemySurvivalMouvementScript enemyPrefab;
+    public EnemySurvivalMovementScript enemyPrefab;
     public PlayerMouvementRotationMouse player;
     public int enemiesToSpawn;
-    public Transform gameplayArena;
+    public Transform enemiesManager;
     public float minSpeed;
     public float maxSpeed;
     
@@ -37,16 +37,26 @@ public class EnemiesSpawnerManagerScript : MonoBehaviour
     {
         int spawnIndex = Random.Range(0, spawnPoints.Count);
         Transform spawnPoint = spawnPoints[spawnIndex];
-        EnemySurvivalMouvementScript newEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation, gameplayArena);
+        EnemySurvivalMovementScript newEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation, enemiesManager);
         newEnemy.Player = player.transform;
         newEnemy.Speed = Random.Range(minSpeed, maxSpeed);
+        newEnemy.transform.name = enemyPrefab.name;
+        
         _enemiesInArena++;
-        newEnemy.OnDeath += OnEnemyDeath;
+        newEnemy.GetComponent<EnemySurvivalCollisionDetectionScript>().OnKilledByBullet += OnEnemyKilledByBullet;
+        newEnemy.GetComponent<EnemySurvivalCollisionDetectionScript>().OnPlayerTouched += OnPlayerTouchedByEnemy;
     }
     
-    private void OnEnemyDeath(EnemySurvivalMouvementScript enemy)
+    private void OnEnemyKilledByBullet(EnemySurvivalCollisionDetectionScript enemy)
     {
-        enemy.OnDeath -= OnEnemyDeath;
+        enemy.OnKilledByBullet -= OnEnemyKilledByBullet;
+        _enemiesInArena--;
+        enemiesManager.GetComponent<CharacterHealthScript>().TakeDamage(2);
+    }
+    
+    private void OnPlayerTouchedByEnemy(EnemySurvivalCollisionDetectionScript enemy)
+    {
+        enemy.OnPlayerTouched -= OnPlayerTouchedByEnemy;
         _enemiesInArena--;
     }
 }

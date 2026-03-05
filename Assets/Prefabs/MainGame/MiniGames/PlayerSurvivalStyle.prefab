@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 9018583409551070097}
   - component: {fileID: 8050252774949652874}
   - component: {fileID: 8423647297069894667}
-  - component: {fileID: 8994527558940573497}
+  - component: {fileID: 3325345800118671442}
+  - component: {fileID: 5736295700532724800}
   m_Layer: 0
   m_Name: PlayerSurvivalStyle
   m_TagString: Untagged
@@ -77,7 +78,7 @@ MonoBehaviour:
   camera: {fileID: 0}
   playerGraphics: {fileID: 6574438465817198272}
   speed: 0.2
---- !u!114 &8994527558940573497
+--- !u!114 &3325345800118671442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,9 +87,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 5420754379430686961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2e7706eca1d30d4eb33ad52c23e5d69, type: 3}
+  m_Script: {fileID: 11500000, guid: 131a4b90cee6e6b49b67c216c90e35ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 8738889216374326272, guid: a929263ec58d81b4dbdd930bec70cbe8, type: 3}
+--- !u!114 &5736295700532724800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420754379430686961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85dee275266c71c42825c62f7d488db5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 2009300257778849622, guid: de5de7ebb9b1fa84cb533d00c13884fa, type: 3}
+  playerGraphics: {fileID: 6574438465817198272}
 --- !u!1 &6477570809864478320
 GameObject:
   m_ObjectHideFlags: 0

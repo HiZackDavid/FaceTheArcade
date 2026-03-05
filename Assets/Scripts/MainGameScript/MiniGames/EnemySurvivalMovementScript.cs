@@ -1,10 +1,8 @@
 using System;
 using UnityEngine;
 
-public class EnemySurvivalMouvementScript : MonoBehaviour
+public class EnemySurvivalMovementScript : MonoBehaviour
 {
-    public event Action<EnemySurvivalMouvementScript> OnDeath;
-    
     private Rigidbody2D _rb;
     private float _speed;
     private Transform _player;
@@ -16,6 +14,7 @@ public class EnemySurvivalMouvementScript : MonoBehaviour
     
     public  Transform Player
     {
+        get => _player;
         set => _player = value;
     }
 
@@ -45,10 +44,6 @@ public class EnemySurvivalMouvementScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
-    private void OnDestroy()
-    {
-        OnDeath?.Invoke(this);
-        OnDeath = null;
-    }
+    
     
 }

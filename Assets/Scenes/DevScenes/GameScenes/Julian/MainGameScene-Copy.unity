@@ -641,6 +641,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2857111486174421211, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857111486174421211, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857111486174421211, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6187693510769623595, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1359,6 +1371,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2D-MiniGame1
       objectReference: {fileID: 0}
+    - target: {fileID: 8874733064591278367, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874733064591278367, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874733064591278367, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8988604133088592773, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.086
@@ -1759,19 +1783,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 211153378128447841, guid: 620efedf1779a3a459768be93739258a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5286660111619796062, guid: 620efedf1779a3a459768be93739258a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5286660111619796062, guid: 620efedf1779a3a459768be93739258a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5286660111619796062, guid: 620efedf1779a3a459768be93739258a, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6320016218604003938, guid: 620efedf1779a3a459768be93739258a, type: 3}
       propertyPath: m_AnchorMax.x
