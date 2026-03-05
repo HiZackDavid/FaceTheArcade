@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EnemySurvivalMouvementScript : MonoBehaviour
 {
+    public event Action<EnemySurvivalMouvementScript> OnDeath;
+    
     private Rigidbody2D _rb;
     private float _speed;
     private Transform _player;
@@ -41,6 +43,12 @@ public class EnemySurvivalMouvementScript : MonoBehaviour
         // Calculate angle in degrees to where the player should face
         float angle = Mathf.Atan2(rotateDirection.y, rotateDirection.x) * Mathf.Rad2Deg - 90f; // Subtract 90 degrees, Y axis will look at player
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
+
+    private void OnDestroy()
+    {
+        OnDeath?.Invoke(this);
+        OnDeath = null;
     }
     
 }

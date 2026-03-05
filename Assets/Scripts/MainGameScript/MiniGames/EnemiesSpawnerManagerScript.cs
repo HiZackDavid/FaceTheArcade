@@ -6,13 +6,13 @@ public class EnemiesSpawnerManagerScript : MonoBehaviour
     public EnemySurvivalMouvementScript enemyPrefab;
     public PlayerMouvementRotationMouse player;
     public int enemiesToSpawn;
-    public float spawnInterval;
     public Transform gameplayArena;
     public float minSpeed;
     public float maxSpeed;
     
     public List<Transform> spawnPoints;
     private int _enemiesInArena;
+    private float _nextSpawnTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -26,7 +26,7 @@ public class EnemiesSpawnerManagerScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         if (_enemiesInArena < enemiesToSpawn)
         {
             SpawnEnemy();
@@ -41,5 +41,12 @@ public class EnemiesSpawnerManagerScript : MonoBehaviour
         newEnemy.Player = player.transform;
         newEnemy.Speed = Random.Range(minSpeed, maxSpeed);
         _enemiesInArena++;
+        newEnemy.OnDeath += OnEnemyDeath;
+    }
+    
+    private void OnEnemyDeath(EnemySurvivalMouvementScript enemy)
+    {
+        enemy.OnDeath -= OnEnemyDeath;
+        _enemiesInArena--;
     }
 }
