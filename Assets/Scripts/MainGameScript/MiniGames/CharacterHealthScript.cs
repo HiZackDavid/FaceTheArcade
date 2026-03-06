@@ -3,21 +3,20 @@ using UnityEngine;
 
 public class CharacterHealthScript : MonoBehaviour
 {
-    private readonly int maxHealth = 100;
-    private int currentHealth;
+    private readonly float maxHealth = 100;
+    private float currentHealth;
 
-    public event Action<int> OnHealthChanged;
+    public event Action<float> OnHealthChanged;
 
     private void Awake()
     {
         currentHealth = maxHealth;
-
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
         currentHealth = Math.Clamp(currentHealth, 0, maxHealth);
-        OnHealthChanged?.Invoke(currentHealth / maxHealth);
+        OnHealthChanged?.Invoke(currentHealth / maxHealth * 100);
     }
 }
