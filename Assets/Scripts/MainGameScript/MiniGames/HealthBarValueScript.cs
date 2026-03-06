@@ -22,7 +22,7 @@ public class HealthBarValueScript : MonoBehaviour
         characterHealthScript.OnHealthChanged -= UpdateHealthBar;
     }
 
-    private void UpdateHealthBar(int healthPercentage)
+    private void UpdateHealthBar(float healthPercentage)
     {
         slider.value = healthPercentage;
     }

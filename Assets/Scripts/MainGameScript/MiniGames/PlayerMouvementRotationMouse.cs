@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class PlayerMouvementRotationMouse : PlayerMiniGameMovement, IPlayerRotationStrategy
 {
-    
-
-
     // Update is called once per frame
     protected override void Update()
     {
@@ -22,7 +19,7 @@ public class PlayerMouvementRotationMouse : PlayerMiniGameMovement, IPlayerRotat
         // Convert mouse position to world position
         Vector3 worldMousePostion = camera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, camera.nearClipPlane));
 
-        // Direction player graphics will face towards (Pt arrival - Pt départure)
+        // Direction player graphics will face towards (Pt arrival - Pt departure)
         Vector2 rotateDirection = (worldMousePostion - playerGraphics.position).normalized;
 
         // Calculate angle in degrees to where the player should face

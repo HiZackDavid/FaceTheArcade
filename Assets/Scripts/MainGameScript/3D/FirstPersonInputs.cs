@@ -23,7 +23,7 @@ public class FirstPersonInputs : MonoBehaviour
     public void OnMove(InputValue value) => MoveInput(value.Get<Vector2>());
     public void OnSprint(InputValue value) => SprintInput(value.isPressed);
     public void OnJump(InputValue value) => JumpInput(value.isPressed);
-    public void OnApplicationFocus(bool hasFocus) =>  SetCursorState(hasFocus);
+
     public void OnLook(InputValue value)
     {
         if (cursorIsInputForLook) LookInput(value.Get<Vector2>());
@@ -33,10 +33,4 @@ public class FirstPersonInputs : MonoBehaviour
     public void LookInput(Vector2 newLookDirection) => look = newLookDirection;
     public void SprintInput(bool newSprintState) => sprint = newSprintState;
     public void JumpInput(bool newJumpState) => jump = newJumpState;
-    private void SetCursorState(bool newState)
-    {
-        bool shouldLock = newState && cursorLocked;
-        Cursor.lockState = shouldLock ? CursorLockMode.Locked : CursorLockMode.None;
-        Cursor.visible = !newState;
-    }
 }
