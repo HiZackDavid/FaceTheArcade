@@ -14,11 +14,13 @@ public class HealthBarValueScript : MonoBehaviour
 
     private void OnEnable()
     {
+        
         characterHealthScript.OnHealthChanged += UpdateHealthBar;
     }
 
     private void OnDisable()
     {
+        UpdateHealthBar(slider.maxValue);
         characterHealthScript.OnHealthChanged -= UpdateHealthBar;
     }
 

@@ -15,8 +15,6 @@ public class EnemySurvivalCollisionDetectionScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.transform.name);
-        
         if (other.name.Equals(bulletPrefab.name))
         {
             //Destroy(other.gameObject);
