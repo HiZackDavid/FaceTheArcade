@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemiesSpawnerManagerScript : MonoBehaviour
@@ -12,7 +13,6 @@ public class EnemiesSpawnerManagerScript : MonoBehaviour
     
     public List<Transform> spawnPoints;
     private int _enemiesInArena;
-    private float _nextSpawnTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -58,5 +58,19 @@ public class EnemiesSpawnerManagerScript : MonoBehaviour
     {
         enemy.OnPlayerTouched -= OnPlayerTouchedByEnemy;
         _enemiesInArena--;
+    }
+
+    void OnDisable()
+    {
+        Reset();
+    }
+
+    private void Reset()
+    {
+        _enemiesInArena = 0;
+        foreach (Transform child in enemiesManager) 
+        {
+            Destroy(child.gameObject);
+        }
     }
 }
