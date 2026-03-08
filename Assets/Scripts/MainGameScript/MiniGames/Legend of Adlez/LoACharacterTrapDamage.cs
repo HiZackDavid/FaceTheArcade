@@ -6,16 +6,21 @@ public class LoACharacterTrapDamage : MonoBehaviour
     [SerializeField] private CharacterHealthScript characterHealthScript;
     [SerializeField] private float trapDamage = 20f;
 
-    private void Reset()
+    private int trapLayer;
+
+    void Awake()
+    {
+        trapLayer = LayerMask.NameToLayer("LoATrap");
+    }
+
+    void Reset()
     {
         characterHealthScript = GetComponent<CharacterHealthScript>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("LoATrap"))
-        {
-            characterHealthScript.TakeDamage(trapDamage);
-        }
+        if (other.gameObject.layer != trapLayer) return;
+        characterHealthScript.TakeDamage(trapDamage);
     }
 }
