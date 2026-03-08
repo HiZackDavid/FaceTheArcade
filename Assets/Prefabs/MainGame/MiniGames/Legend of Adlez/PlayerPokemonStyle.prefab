@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 4961771170781547743}
   - component: {fileID: 637780901689240856}
   - component: {fileID: 3491921777400874038}
-  - component: {fileID: 192984176409329881}
   - component: {fileID: 2442813680758784398}
+  - component: {fileID: 192984176409329881}
+  - component: {fileID: 7503547853334894302}
   m_Layer: 8
   m_Name: PlayerPokemonStyle
   m_TagString: Untagged
@@ -101,18 +102,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &192984176409329881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849288106099597674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2e7706eca1d30d4eb33ad52c23e5d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &2442813680758784398
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -168,6 +157,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &192984176409329881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849288106099597674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e7706eca1d30d4eb33ad52c23e5d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7503547853334894302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849288106099597674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a872d722785ca9d4a854ac4b0d1702fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterHealthScript: {fileID: 192984176409329881}
+  trapDamage: 20
 --- !u!1 &3468968299891674547
 GameObject:
   m_ObjectHideFlags: 0
