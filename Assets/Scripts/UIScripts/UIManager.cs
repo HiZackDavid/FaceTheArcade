@@ -34,6 +34,16 @@ public class UIManager : MonoBehaviour
         OnChangeUI(mainHUD);
     }
 
+    public void showHideableHUD()
+    {
+        currentHUD.showHideable();
+    }
+
+    public void hideHideableHUD()
+    {
+        currentHUD.hideHideable();
+    }
+
     public void OnRequestPlay() 
     {
         GameManager.instance.StartGame();

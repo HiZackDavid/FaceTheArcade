@@ -35,5 +35,8 @@ public class FirstPersonInputs : MonoBehaviour
     public void LookInput(Vector2 newLookDirection) => look = newLookDirection;
     public void SprintInput(bool newSprintState) => sprint = newSprintState;
     public void JumpInput(bool newJumpState) => jump = newJumpState;
-    public void InteractInput(bool newInteractState) => interact = newInteractState;
+    public void InteractInput(bool newInteractState)
+    {
+        interact = newInteractState;
+    }
 }

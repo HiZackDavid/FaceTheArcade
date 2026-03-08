@@ -39,7 +39,7 @@ public class CameraManager : MonoBehaviour
     }
 
 
-    private void SwitchToCamera(CinemachineCamera targetCamera)
+    public void SwitchToCamera(CinemachineCamera targetCamera, bool reactivateController = true)
     {
         ControllerManager.instance.DeactivateController();
 
@@ -49,7 +49,10 @@ public class CameraManager : MonoBehaviour
 
         StartCoroutine(WaitForBlend());
 
-        ControllerManager.instance.ActivateController();
+        if (reactivateController)
+            ControllerManager.instance.ActivateController();
+        else
+            UIManager.instace.hideHideableHUD();
     }
 
     IEnumerator WaitForBlend()

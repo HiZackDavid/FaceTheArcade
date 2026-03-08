@@ -8,10 +8,12 @@ public class InteractionArea : MonoBehaviour
     [SerializeField] private float outlineWidth = 10.0f;
 
     private Color prevCol;
+    private GameObject curObject;
 
     private bool isInteractuable = false;
 
     public bool canInteract() => isInteractuable;
+    public GameObject getCurObject() => curObject;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -55,6 +57,9 @@ public class InteractionArea : MonoBehaviour
                 outline.OutlineColor = outlineColor;
                 outline.OutlineWidth = outlineWidth;
             }
+
+            curObject = target;
+            UIManager.instace.showHideableHUD();
         }
     }
 
@@ -81,6 +86,8 @@ public class InteractionArea : MonoBehaviour
                 if (outline != null)
                     outline.enabled = false;
             }
+
+            UIManager.instace.hideHideableHUD();
         }
 
     }
