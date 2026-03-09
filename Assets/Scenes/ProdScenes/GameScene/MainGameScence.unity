@@ -601,6 +601,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 656477103847309266, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1590017097}
+    - target: {fileID: 656477103847309266, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2018169152}
+    - target: {fileID: 656477103847309266, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: telegraphArrow
+      value: 
+      objectReference: {fileID: 1439802004}
     - target: {fileID: 2435327857818738735, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.085
@@ -641,6 +653,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2893760833358380972, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: characterHealthScript
+      value: 
+      objectReference: {fileID: 2018169155}
     - target: {fileID: 6187693510769623595, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -649,6 +665,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7545814277370901553, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: characterHealthScript
+      value: 
+      objectReference: {fileID: 1590017094}
     - target: {fileID: 9153602497215727237, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_Name
       value: 2D-MiniGame3
@@ -1176,6 +1196,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416326133}
   m_CullTransparentMesh: 1
+--- !u!4 &1439802004 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7013262415337856556, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+  m_PrefabInstance: {fileID: 870805387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1451884306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1429,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
+--- !u!114 &1590017094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3984740431539471599, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+  m_PrefabInstance: {fileID: 870805387}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e7706eca1d30d4eb33ad52c23e5d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1590017097 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 2610502895009532974, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+  m_PrefabInstance: {fileID: 870805387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1716652052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1932,6 +1973,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2018169152 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 314675449216628164, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+  m_PrefabInstance: {fileID: 870805387}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2018169155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2459227907476537538, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+  m_PrefabInstance: {fileID: 870805387}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e7706eca1d30d4eb33ad52c23e5d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2115912051
 PrefabInstance:
   m_ObjectHideFlags: 0
