@@ -19,7 +19,7 @@ public class PlayerSurvivalShootScript : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && shootTimer <= 0f)
         {
             ShootBullet();
-            shootTimer = 0.25f;
+            shootTimer = 0.15f;
         }
     }
     
@@ -27,6 +27,6 @@ public class PlayerSurvivalShootScript : MonoBehaviour
     {  
         var bullet = Instantiate(bulletPrefab, transform.position , playerGraphics.rotation);
         bullet.name = bulletPrefab.name;
-        bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.up * 0.21f , ForceMode2D.Impulse);
+        bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.up * 0.50f , ForceMode2D.Impulse);
     }
 }
