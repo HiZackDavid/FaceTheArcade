@@ -14,9 +14,9 @@ TagManager:
   - UI
   - Player
   - Walls
-  - 
-  - 
-  - 
+  - LoAPlayer
+  - LoAAnomaly
+  - LoATrap
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ArcadeMinigame
+    uniqueID: 2027048965
     locked: 0
   m_RenderingLayers:
   - Default
