@@ -72,6 +72,7 @@ public class FirstPersonController : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _input = GetComponent<FirstPersonInputs>();
         _playerInput = GetComponent<PlayerInput>();
+
         _interactionArea = transform.GetComponentsInChildren<InteractionArea>()[0];
 
 
