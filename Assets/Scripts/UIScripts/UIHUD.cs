@@ -7,6 +7,8 @@ public class UIHUD : UIElement
     [SerializeField] private TextMeshProUGUI timeCounterText;
 
     [SerializeField] private Image[] cheatCodeImages;
+
+    [SerializeField] private GameObject hideableElement;
     
     public void UpdateTimer(float amount)
     {
@@ -28,4 +30,17 @@ public class UIHUD : UIElement
             }
         }
     }
+
+    public void showHideable()
+    {
+        if (hideableElement)
+            hideableElement.SetActive(true);
+    }
+
+    public void hideHideable()
+    {
+        if (hideableElement)
+            hideableElement.SetActive(false);
+    }
+
 }
