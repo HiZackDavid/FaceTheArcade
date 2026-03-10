@@ -1,6 +1,9 @@
 using System;
+using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
 
 public class FirstPersonController : MonoBehaviour
@@ -59,6 +62,8 @@ public class FirstPersonController : MonoBehaviour
     private PlayerInput _playerInput;
     CharacterController _controller;
     FirstPersonInputs _input;
+    InteractionArea _interactionArea;
+
     
     const float Threshold = 0.01f;
 
@@ -68,6 +73,9 @@ public class FirstPersonController : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _input = GetComponent<FirstPersonInputs>();
         _playerInput = GetComponent<PlayerInput>();
+
+        _interactionArea = transform.GetComponentsInChildren<InteractionArea>()[0];
+
 
         _jumpTimeoutDelta = jumpTimeout;
         _fallTimeoutDelta = fallTimeout;
@@ -80,6 +88,7 @@ public class FirstPersonController : MonoBehaviour
     {
         GroundedCheck();
         JumpWithGravity();
+        Interact();
         Move();
     }
 
@@ -151,6 +160,20 @@ public class FirstPersonController : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0.0f, _cinemachineTargetYaw, 0.0f);
             
+        }
+    }
+
+    void Interact() 
+    {
+
+        if (_input.interact && _interactionArea.canInteract()) 
+        {
+            _input.interact = false;
+
+            GameObject obj = _interactionArea.getCurObject();
+            CinemachineCamera cam = obj.GetComponentInChildren<CinemachineCamera>();
+            CameraManager.instance.SwitchToCamera(cam, false);
+
         }
     }
 

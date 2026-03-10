@@ -15,6 +15,7 @@ public class FirstPersonInputs : MonoBehaviour
     public Vector2 look;
     public bool sprint;
     public bool jump;
+    public bool interact;
     
     [Header("Mouse Cursor Settings")]
     public bool cursorLocked = true;
@@ -23,6 +24,7 @@ public class FirstPersonInputs : MonoBehaviour
     public void OnMove(InputValue value) => MoveInput(value.Get<Vector2>());
     public void OnSprint(InputValue value) => SprintInput(value.isPressed);
     public void OnJump(InputValue value) => JumpInput(value.isPressed);
+    public void OnInteract(InputValue value) => InteractInput(value.isPressed);
 
     public void OnLook(InputValue value)
     {
@@ -33,4 +35,8 @@ public class FirstPersonInputs : MonoBehaviour
     public void LookInput(Vector2 newLookDirection) => look = newLookDirection;
     public void SprintInput(bool newSprintState) => sprint = newSprintState;
     public void JumpInput(bool newJumpState) => jump = newJumpState;
+    public void InteractInput(bool newInteractState)
+    {
+        interact = newInteractState;
+    }
 }
