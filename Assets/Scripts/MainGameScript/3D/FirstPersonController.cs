@@ -165,15 +165,24 @@ public class FirstPersonController : MonoBehaviour
 
     void Interact() 
     {
-
         if (_input.interact && _interactionArea.canInteract()) 
         {
             _input.interact = false;
 
             GameObject obj = _interactionArea.getCurObject();
-            CinemachineCamera cam = obj.GetComponentInChildren<CinemachineCamera>();
-            CameraManager.instance.SwitchToCamera(cam, false);
 
+            ArcadeMachineController arcade = obj.GetComponentInParent<ArcadeMachineController>();
+            if (arcade != null)
+            {
+                arcade.Interact();
+                return;
+            }
+            
+            CinemachineCamera cam = obj.GetComponentInChildren<CinemachineCamera>();
+            if (cam != null)
+            {
+                CameraManager.instance.SwitchToCamera(cam, false);
+            }
         }
     }
 

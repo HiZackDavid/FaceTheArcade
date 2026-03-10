@@ -2675,7 +2675,7 @@ MonoBehaviour:
   player: {fileID: 7277979717086766257}
   anomaly: {fileID: 995362046892893516}
   playerSpawnPoint: {fileID: 3022982480071673385}
-  anomalySpawnPoint: {fileID: 8153714485502877838}
+  anomalySpawnPoint: {fileID: 995362046892893516}
   anomalyController: {fileID: 7512327622854799015}
   playerTrapDamage: {fileID: 3022449212533229488}
   anomalyTrapDamage: {fileID: 555553257226515060}
@@ -4657,7 +4657,7 @@ Tilemap:
       - {fileID: -3361695206664772668, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
       - {fileID: -3975452732544823890, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
       - {fileID: -5603517846351022495, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
-      m_AnimationSpeed: 13.365869
+      m_AnimationSpeed: 10.622095
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 6, y: -4, z: 0}
@@ -4671,7 +4671,7 @@ Tilemap:
       - {fileID: -3361695206664772668, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
       - {fileID: -3975452732544823890, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
       - {fileID: -5603517846351022495, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
-      m_AnimationSpeed: 12.803019
+      m_AnimationSpeed: 10.436956
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: 3, z: 0}
@@ -4685,7 +4685,7 @@ Tilemap:
       - {fileID: -3361695206664772668, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
       - {fileID: -3975452732544823890, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
       - {fileID: -5603517846351022495, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
-      m_AnimationSpeed: 11.092228
+      m_AnimationSpeed: 11.46727
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 6, y: 3, z: 0}
@@ -4699,7 +4699,7 @@ Tilemap:
       - {fileID: -3361695206664772668, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
       - {fileID: -3975452732544823890, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
       - {fileID: -5603517846351022495, guid: 5aff82765e83c644ba96eeab6c3d4f0a, type: 3}
-      m_AnimationSpeed: 10.831969
+      m_AnimationSpeed: 12.295389
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -5492,6 +5492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeartMonster
       objectReference: {fileID: 0}
+    - target: {fileID: 7134668838601503658, guid: d16b580993f5c6f448a9674ce05d77cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9148893725014796717, guid: d16b580993f5c6f448a9674ce05d77cb, type: 3}
       propertyPath: m_Radius
       value: 0.93
@@ -5570,6 +5574,10 @@ PrefabInstance:
     - target: {fileID: 849288106099597674, guid: c98c9d91649ef0f47898b75f12c963f1, type: 3}
       propertyPath: m_Name
       value: PlayerPokemonStyle
+      objectReference: {fileID: 0}
+    - target: {fileID: 849288106099597674, guid: c98c9d91649ef0f47898b75f12c963f1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2652764706018457055, guid: c98c9d91649ef0f47898b75f12c963f1, type: 3}
       propertyPath: m_LocalScale.y

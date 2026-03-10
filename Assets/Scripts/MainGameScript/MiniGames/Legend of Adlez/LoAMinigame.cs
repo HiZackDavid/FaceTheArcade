@@ -44,6 +44,8 @@ public class LoAMinigame : MonoBehaviour, IMinigame
     
     void SetGameplayEnabledState(bool isEnabled)
     {
+        if (player != null) player.gameObject.SetActive(isEnabled);
+        if (anomaly != null) anomaly.gameObject.SetActive(isEnabled);
         if (anomalyController != null) anomalyController.enabled = isEnabled;
         if (playerTrapDamage != null) playerTrapDamage.enabled = isEnabled;
         if (anomalyTrapDamage != null) anomalyTrapDamage.enabled = isEnabled;
@@ -55,5 +57,6 @@ public class LoAMinigame : MonoBehaviour, IMinigame
     {
         if (player != null && playerSpawnPoint != null) player.position = playerSpawnPoint.position;
         if (anomaly != null && anomalySpawnPoint != null) anomaly.position = anomalySpawnPoint.position;
+        
     }
 }
