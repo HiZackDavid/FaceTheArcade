@@ -16,7 +16,6 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] private CinemachineCamera[] allCameras;
 
-
     private bool reactivateController = false;
     private bool ortho = false;
     private CinemachineCamera tCam;

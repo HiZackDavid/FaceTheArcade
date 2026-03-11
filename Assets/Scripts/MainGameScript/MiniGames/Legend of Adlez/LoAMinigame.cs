@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LoAMinigame : MonoBehaviour, IMinigame
@@ -11,52 +12,52 @@ public class LoAMinigame : MonoBehaviour, IMinigame
     [SerializeField] Transform anomalySpawnPoint;
     
     [Header("Gameplay References")]
-    [SerializeField] LoAAnomalyController anomalyController;
-    [SerializeField] LoACharacterTrapDamage playerTrapDamage;
-    [SerializeField] LoACharacterTrapDamage anomalyTrapDamage;
-    [SerializeField] LoAMonsterDamageZone anomalyDamageZone;
-    
-    [Header("UI")]
-    [SerializeField] GameObject minigameCanvas;
+    [SerializeField] private CharacterHealthScript playerHealth;
+    [SerializeField] private CharacterHealthScript anomalyHealth;
 
-    bool isRunning;
+    [Header("Minigame Wrapper")]
+    [SerializeField] GameObject container;
+
+    private void Update()
+    {
+        CheckHealth();
+    }
 
     public void StartGame()
     {
         ResetGame();
         SetGameplayEnabledState(true);
-        isRunning = true;
     }
 
     public void ResetGame()
     {
         ResetGameState();
         SetGameplayEnabledState(true);
-        isRunning = true;
     }
 
     public void EndGame()
     {
-        isRunning = false;
         SetGameplayEnabledState(false);
         CameraManager.instance.SwitchToPrimaryCamera();
     }
-    
+
     void SetGameplayEnabledState(bool isEnabled)
     {
-        if (player != null) player.gameObject.SetActive(isEnabled);
-        if (anomaly != null) anomaly.gameObject.SetActive(isEnabled);
-        if (anomalyController != null) anomalyController.enabled = isEnabled;
-        if (playerTrapDamage != null) playerTrapDamage.enabled = isEnabled;
-        if (anomalyTrapDamage != null) anomalyTrapDamage.enabled = isEnabled;
-        if (anomalyDamageZone != null) anomalyDamageZone.enabled = isEnabled;
-        if (minigameCanvas != null) minigameCanvas.SetActive(isEnabled);
+        if (container != null) container.SetActive(isEnabled);
     }
 
     void ResetGameState()
     {
         if (player != null && playerSpawnPoint != null) player.position = playerSpawnPoint.position;
         if (anomaly != null && anomalySpawnPoint != null) anomaly.position = anomalySpawnPoint.position;
-        
+    }
+
+    void CheckHealth()
+    {
+        if (playerHealth != null && playerHealth.IsDead() 
+            || (anomalyHealth != null && anomalyHealth.IsDead()))
+        {
+            EndGame();
+        }
     }
 }
