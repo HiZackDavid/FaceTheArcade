@@ -19,6 +19,11 @@ public class CharacterHealthScript : MonoBehaviour
         currentHealth = Math.Clamp(currentHealth, 0, maxHealth);
         OnHealthChanged?.Invoke(currentHealth / maxHealth * 100);
     }
+
+    public bool IsDead()
+    {
+        return currentHealth == 0;
+    }
     
     void OnDisable()
     {

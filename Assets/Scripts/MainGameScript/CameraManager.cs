@@ -61,7 +61,6 @@ public class CameraManager : MonoBehaviour
             cam.enabled = targetCamera == cam;
         }
 
-
         StartCoroutine(WaitForBlend());
 
     }
@@ -97,6 +96,5 @@ public class CameraManager : MonoBehaviour
 
         if (ortho)
             setOrtho();
-
     }
 }
