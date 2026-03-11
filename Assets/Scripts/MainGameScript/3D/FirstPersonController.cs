@@ -172,6 +172,7 @@ public class FirstPersonController : MonoBehaviour
 
             GameObject obj = _interactionArea.getCurObject();
             CinemachineCamera cam = obj.GetComponentInChildren<CinemachineCamera>();
+            _interactionArea.RemoveOutline(obj);
             CameraManager.instance.SwitchToCamera(cam, false);
 
         }
