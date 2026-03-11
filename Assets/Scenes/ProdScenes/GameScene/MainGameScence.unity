@@ -686,6 +686,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6dec2c0eb549dc4588fa0601b841a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &706857423 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3772507111583707250, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+  m_PrefabInstance: {fileID: 870805387}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4e834662196d24cad4ab690620fe52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &870805387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -701,6 +712,22 @@ PrefabInstance:
     - target: {fileID: 448594604773059538, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
+      value: 11.714586
+      objectReference: {fileID: 0}
+    - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
+      value: 12.558672
+      objectReference: {fileID: 0}
+    - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
+      value: 13.895365
+      objectReference: {fileID: 0}
+    - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
+      value: 10.3245325
       objectReference: {fileID: 0}
     - target: {fileID: 2435327857818738735, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2185,6 +2212,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Selectable
       objectReference: {fileID: 0}
+    - target: {fileID: 5736343404420186777, guid: dec2b5d98772d3a428826209f0ede630, type: 3}
+      propertyPath: arcadeCamera
+      value: 
+      objectReference: {fileID: 1865067513}
+    - target: {fileID: 5736343404420186777, guid: dec2b5d98772d3a428826209f0ede630, type: 3}
+      propertyPath: minigameBehaviour
+      value: 
+      objectReference: {fileID: 706857423}
     - target: {fileID: 7349809191202491830, guid: dec2b5d98772d3a428826209f0ede630, type: 3}
       propertyPath: m_TagString
       value: Selectable
