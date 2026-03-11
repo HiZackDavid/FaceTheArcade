@@ -19,7 +19,6 @@ public class CameraManager : MonoBehaviour
 
     private bool reactivateController = false;
     private bool ortho = false;
-    private bool orthoToPerspective = false;
     private CinemachineCamera tCam;
 
     private void Awake()
@@ -42,6 +41,7 @@ public class CameraManager : MonoBehaviour
 
     public void SwitchToPrimaryCamera()
     {
+        setPerspective();
         SwitchToCamera(primaryCamera, ortho: false);
     }
 
@@ -51,9 +51,6 @@ public class CameraManager : MonoBehaviour
         tCam = targetCamera;
         this.reactivateController = reactivateController;
         this.ortho = ortho;
-
-        if (orthoToPerspective)
-            setPerspective();
 
         ControllerManager.instance.DeactivateController();
 
@@ -71,7 +68,6 @@ public class CameraManager : MonoBehaviour
         tCam.Lens.OrthographicSize = 0.2623907f;
         tCam.Lens.NearClipPlane = 0.3f;
         tCam.Lens.FarClipPlane = 10f;
-        orthoToPerspective = true;
     }
 
     private void setPerspective()
@@ -80,7 +76,6 @@ public class CameraManager : MonoBehaviour
         tCam.Lens.FieldOfView = 60;
         tCam.Lens.NearClipPlane = 0.3f;
         tCam.Lens.FarClipPlane = 1000f;
-        orthoToPerspective = false;
     }
 
     IEnumerator WaitForBlend()
@@ -96,5 +91,7 @@ public class CameraManager : MonoBehaviour
 
         if (ortho)
             setOrtho();
+        else
+            setPerspective();
     }
 }
