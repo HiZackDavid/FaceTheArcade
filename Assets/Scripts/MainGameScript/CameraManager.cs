@@ -16,8 +16,10 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] private CinemachineCamera[] allCameras;
 
+
     private bool reactivateController = false;
     private bool ortho = false;
+    private bool orthoToPerspective = false;
     private CinemachineCamera tCam;
 
     private void Awake()
@@ -50,15 +52,35 @@ public class CameraManager : MonoBehaviour
         this.reactivateController = reactivateController;
         this.ortho = ortho;
 
+        if (orthoToPerspective)
+            setPerspective();
+
         ControllerManager.instance.DeactivateController();
 
         foreach (CinemachineCamera cam in allCameras) {
             cam.enabled = targetCamera == cam;
         }
 
-
         StartCoroutine(WaitForBlend());
 
+    }
+
+    private void setOrtho()
+    {
+        tCam.Lens.ModeOverride = LensSettings.OverrideModes.Orthographic;
+        tCam.Lens.OrthographicSize = 0.2623907f;
+        tCam.Lens.NearClipPlane = 0.3f;
+        tCam.Lens.FarClipPlane = 10f;
+        orthoToPerspective = true;
+    }
+
+    private void setPerspective()
+    {
+        tCam.Lens.ModeOverride = LensSettings.OverrideModes.Perspective;
+        tCam.Lens.FieldOfView = 60;
+        tCam.Lens.NearClipPlane = 0.3f;
+        tCam.Lens.FarClipPlane = 1000f;
+        orthoToPerspective = false;
     }
 
     IEnumerator WaitForBlend()
@@ -73,12 +95,6 @@ public class CameraManager : MonoBehaviour
             UIManager.instace.hideHideableHUD();
 
         if (ortho)
-        {
-            tCam.Lens.ModeOverride = LensSettings.OverrideModes.Orthographic;
-            tCam.Lens.OrthographicSize = 0.2623907f;
-            tCam.Lens.NearClipPlane = 0.3f;
-            tCam.Lens.FarClipPlane = 10f;
-        }
-
+            setOrtho();
     }
 }

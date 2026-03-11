@@ -63,7 +63,7 @@ public class InteractionArea : MonoBehaviour
         }
     }
 
-    private void RemoveOutline(GameObject target) 
+    public void RemoveOutline(GameObject target) 
     {
         if (target.CompareTag("Selectable"))
         {

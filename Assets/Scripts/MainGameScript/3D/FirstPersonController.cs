@@ -170,6 +170,7 @@ public class FirstPersonController : MonoBehaviour
             _input.interact = false;
 
             GameObject obj = _interactionArea.getCurObject();
+            _interactionArea.RemoveOutline(obj);
 
             ArcadeMachineController arcade = obj.GetComponentInParent<ArcadeMachineController>();
             if (arcade != null)
