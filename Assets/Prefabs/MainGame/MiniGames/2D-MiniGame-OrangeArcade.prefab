@@ -2632,19 +2632,19 @@ PrefabInstance:
       objectReference: {fileID: 7013262415337856556}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 12.586423
+      value: 13.740277
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
-      value: 12.5532675
+      value: 10.494962
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
-      value: 12.315555
+      value: 12.77373
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
-      value: 13.737461
+      value: 13.881785
       objectReference: {fileID: 0}
     - target: {fileID: 7867334295947537370, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_LocalPosition.x
