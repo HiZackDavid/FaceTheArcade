@@ -2746,6 +2746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cddbf8ad06cc94ab8edbc1b1747540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesSpawnerManager: {fileID: 7585564694753622034}
   playerHealth: {fileID: 2612382390101937554}
   anomalyHealth: {fileID: 3789353567910161313}
   winLoseTextContainer: {fileID: 4814530022977531343}

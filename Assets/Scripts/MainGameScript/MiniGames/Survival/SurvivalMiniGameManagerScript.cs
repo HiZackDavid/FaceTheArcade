@@ -5,6 +5,7 @@ using System.Collections;
 public class SurvivalMiniGameManagerScript : MonoBehaviour, IMinigame
 {
 
+    public EnemiesSpawnerManagerScript enemiesSpawnerManager;
     public CharacterHealthScript playerHealth;
     public CharacterHealthScript anomalyHealth;
     
@@ -47,6 +48,9 @@ public class SurvivalMiniGameManagerScript : MonoBehaviour, IMinigame
             winLoseTextContainer.SetActive(true);
             winnerText.SetActive(!playerIsDead);
             loserText.SetActive(playerIsDead);
+            
+            if (playerIsDead) enemiesSpawnerManager.PlayerLost();
+            if (anomalyIsDead) enemiesSpawnerManager.PlayerWon();
             
             StartCoroutine(ShutDownMinigameAfterDelay());
         }

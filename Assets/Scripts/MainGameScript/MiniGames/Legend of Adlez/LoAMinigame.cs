@@ -58,6 +58,9 @@ public class LoAMinigame : MonoBehaviour, IMinigame
         if (player != null && playerSpawnPoint != null) player.position = playerSpawnPoint.position;
         if (anomaly != null && anomalySpawnPoint != null) anomaly.position = anomalySpawnPoint.position;
         
+        playerHealth.gameObject.SetActive(true);
+        anomalyHealth.gameObject.SetActive(true);
+        
         winLoseTextContainer.SetActive(false);
         winnerText.SetActive(false);
         loserText.SetActive(false);
@@ -73,6 +76,9 @@ public class LoAMinigame : MonoBehaviour, IMinigame
             winLoseTextContainer.SetActive(true);
             winnerText.SetActive(!playerIsDead);
             loserText.SetActive(playerIsDead);
+            
+            playerHealth.gameObject.SetActive(anomalyIsDead);
+            anomalyHealth.gameObject.SetActive(false);
             
             StartCoroutine(ShutDownMinigameAfterDelay());
         }
