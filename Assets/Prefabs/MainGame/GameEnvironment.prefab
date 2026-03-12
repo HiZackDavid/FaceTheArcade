@@ -859,13 +859,36 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1416852519262404311, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7331593605983824527}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1793131325288408173, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6431344682996793185}
   m_SourcePrefab: {fileID: 100100000, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
 --- !u!4 &1316638080242009684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1416852519262404311, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
   m_PrefabInstance: {fileID: 138495067329624195}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1805508006191013102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1793131325288408173, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
+  m_PrefabInstance: {fileID: 138495067329624195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6431344682996793185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805508006191013102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649da72003da7cf488afd1c2634b8eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arcadeCamera: {fileID: 7628999014031271722}
+  minigameBehaviour: {fileID: 3912258597983509090}
+  startGameDelay: 1.5
 --- !u!1001 &332240235053990171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -884,19 +907,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 12.299317
+      value: 13.130178
       objectReference: {fileID: 0}
     - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
-      value: 13.541932
+      value: 11.923317
       objectReference: {fileID: 0}
     - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
-      value: 11.8372135
+      value: 12.278763
       objectReference: {fileID: 0}
     - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
-      value: 11.5490265
+      value: 10.176112
       objectReference: {fileID: 0}
     - target: {fileID: 2435327857818738735, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1612,7 +1635,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8759978560986259577, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
       propertyPath: m_Name
-      value: 2D-MiniGame1
+      value: 2D-MiniGame-BlueArcade-Survival
       objectReference: {fileID: 0}
     - target: {fileID: 8988604133088592773, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1659,11 +1682,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
+--- !u!114 &3912258597983509090 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3407465871435379560, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
+  m_PrefabInstance: {fileID: 1802251700991060234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7cddbf8ad06cc94ab8edbc1b1747540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7331593605983824527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8988604133088592773, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
   m_PrefabInstance: {fileID: 1802251700991060234}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7628999014031271722 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8132731755536436768, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
+  m_PrefabInstance: {fileID: 1802251700991060234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1807023703850865976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2310,8 +2355,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6800331008555050738, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2688753926720348468}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6130649964986973256, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6838995120072273447}
   m_SourcePrefab: {fileID: 100100000, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
+--- !u!1 &7349809191202491830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6130649964986973256, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
+  m_PrefabInstance: {fileID: 3525110342080901630}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6838995120072273447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349809191202491830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649da72003da7cf488afd1c2634b8eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arcadeCamera: {fileID: 7931267343931224184}
+  minigameBehaviour: {fileID: 3514770892677230953}
+  startGameDelay: 1
 --- !u!4 &7977023002585257740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6800331008555050738, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
