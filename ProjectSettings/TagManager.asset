@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - CinemachineTarget
+  - Selectable
   layers:
   - Default
   - TransparentFX
@@ -14,9 +15,9 @@ TagManager:
   - UI
   - Player
   - Walls
-  - Projectile
-  - Enemy
-  - Anomaly
+  - LoAPlayer
+  - LoAAnomaly
+  - LoATrap
   - 
   - 
   - 
@@ -42,8 +43,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 2179225945
+  - name: ArcadeMinigame
+    uniqueID: 2027048965
     locked: 0
   m_RenderingLayers:
   - Default
