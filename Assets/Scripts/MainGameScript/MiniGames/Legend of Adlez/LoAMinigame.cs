@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class LoAMinigame : MonoBehaviour, IMinigame
 {
@@ -16,6 +17,13 @@ public class LoAMinigame : MonoBehaviour, IMinigame
 
     [Header("Minigame Wrapper")]
     [SerializeField] GameObject container;
+    
+    [Header("EndOfGame Text References")]
+    [SerializeField] private GameObject winLoseTextContainer;
+    [SerializeField] private GameObject winnerText;
+    [SerializeField] private GameObject loserText;
+    
+    private float _shutDownGameDelay = 5.0f;
 
     private void Update()
     {
@@ -49,14 +57,36 @@ public class LoAMinigame : MonoBehaviour, IMinigame
     {
         if (player != null && playerSpawnPoint != null) player.position = playerSpawnPoint.position;
         if (anomaly != null && anomalySpawnPoint != null) anomaly.position = anomalySpawnPoint.position;
+        
+        playerHealth.gameObject.SetActive(true);
+        anomalyHealth.gameObject.SetActive(true);
+        
+        winLoseTextContainer.SetActive(false);
+        winnerText.SetActive(false);
+        loserText.SetActive(false);
     }
 
     void CheckHealth()
     {
-        if (playerHealth != null && playerHealth.IsDead() 
-            || (anomalyHealth != null && anomalyHealth.IsDead()))
+        bool playerIsDead = playerHealth.IsDead();
+        bool anomalyIsDead = anomalyHealth.IsDead();
+        
+        if (playerIsDead || anomalyIsDead)
         {
-            EndGame();
+            winLoseTextContainer.SetActive(true);
+            winnerText.SetActive(!playerIsDead);
+            loserText.SetActive(playerIsDead);
+            
+            playerHealth.gameObject.SetActive(anomalyIsDead);
+            anomalyHealth.gameObject.SetActive(false);
+            
+            StartCoroutine(ShutDownMinigameAfterDelay());
         }
+    }
+    
+    public IEnumerator ShutDownMinigameAfterDelay()
+    {
+        yield return new WaitForSeconds(_shutDownGameDelay);
+        EndGame();
     }
 }

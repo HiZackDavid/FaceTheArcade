@@ -2,6 +2,17 @@ using UnityEngine;
 
 public class PlayerMouvementRotationMouse : PlayerMiniGameMovement, IPlayerRotationStrategy
 {
+    private Vector3 initialPlayerPosition;
+    private Quaternion initialPlayerRotation;
+
+    protected override void Awake()
+    {
+        initialPlayerPosition = transform.position;
+        initialPlayerRotation = playerGraphics.rotation;
+        
+        base.Awake();
+    }
+    
     // Update is called once per frame
     protected override void Update()
     {
@@ -26,5 +37,12 @@ public class PlayerMouvementRotationMouse : PlayerMiniGameMovement, IPlayerRotat
         float angle = Mathf.Atan2(rotateDirection.y, rotateDirection.x) * Mathf.Rad2Deg - 90f; // Subtract 90 degrees, Y axis will look at mouse
         playerGraphics.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         
+    }
+
+
+    void OnDisable()
+    {
+        transform.position = initialPlayerPosition;
+        playerGraphics.rotation = initialPlayerRotation;
     }
 }
