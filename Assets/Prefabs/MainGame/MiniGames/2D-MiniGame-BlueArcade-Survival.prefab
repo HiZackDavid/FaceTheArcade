@@ -2139,6 +2139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2953261233833488118}
+  - component: {fileID: 9116790341671511749}
   m_Layer: 0
   m_Name: GameplayArea
   m_TagString: Untagged
@@ -2169,6 +2170,20 @@ Transform:
   - {fileID: 2577009637106862759}
   m_Father: {fileID: 8988604133088592773}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &9116790341671511749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4929348842700339323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7cddbf8ad06cc94ab8edbc1b1747540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 2612382390101937554}
+  anomalyHealth: {fileID: 3789353567910161313}
 --- !u!1 &5091466961732689004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3925,7 +3940,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8988604133088592773}
-  - component: {fileID: 3407465871435379560}
   m_Layer: 0
   m_Name: 2D-MiniGame-BlueArcade-Survival
   m_TagString: Untagged
@@ -3951,19 +3965,6 @@ Transform:
   - {fileID: 2953261233833488118}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3407465871435379560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8759978560986259577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7cddbf8ad06cc94ab8edbc1b1747540, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameplayArena: {fileID: 4929348842700339323}
 --- !u!1 &8786420703499724910
 GameObject:
   m_ObjectHideFlags: 0

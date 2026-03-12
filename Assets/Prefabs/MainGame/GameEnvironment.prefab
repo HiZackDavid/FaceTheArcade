@@ -887,8 +887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arcadeCamera: {fileID: 7628999014031271722}
-  minigameBehaviour: {fileID: 3912258597983509090}
-  startGameDelay: 1.5
+  minigameBehaviour: {fileID: 7460136765548957647}
+  startGameDelay: 2.5
 --- !u!1001 &332240235053990171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1682,9 +1682,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
---- !u!114 &3912258597983509090 stripped
+--- !u!4 &7331593605983824527 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8988604133088592773, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
+  m_PrefabInstance: {fileID: 1802251700991060234}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7460136765548957647 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3407465871435379560, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 9116790341671511749, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
   m_PrefabInstance: {fileID: 1802251700991060234}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -1693,11 +1698,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cddbf8ad06cc94ab8edbc1b1747540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7331593605983824527 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8988604133088592773, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
-  m_PrefabInstance: {fileID: 1802251700991060234}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7628999014031271722 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8132731755536436768, guid: 473708d9d9dde724d8af71206cc24d7e, type: 3}
@@ -2291,7 +2291,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6130649964986973256, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
       propertyPath: m_Name
-      value: ArcadeMachineV4 (1)
+      value: ArcadeMachineOrange
       objectReference: {fileID: 0}
     - target: {fileID: 6130649964986973256, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
       propertyPath: m_TagString

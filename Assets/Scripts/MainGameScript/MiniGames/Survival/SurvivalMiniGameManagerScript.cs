@@ -1,22 +1,35 @@
+using System;
 using UnityEngine;
 
 public class SurvivalMiniGameManagerScript : MonoBehaviour, IMinigame
 {
-    public GameObject gameplayArena;
+
+    public CharacterHealthScript playerHealth;
+    public CharacterHealthScript anomalyHealth;
     
-    public void StartGame()
+    private void Update()
     {
-        gameplayArena.SetActive(true);
+        CheckHealth();
     }
 
-    public void ResetGame()
+    public void StartGame()
     {
-        
+        gameObject.SetActive(true);
     }
+
+    public void ResetGame(){ }
 
     public void EndGame()
     {
-        gameplayArena.SetActive(false);
         CameraManager.instance.SwitchToPrimaryCamera();
+        gameObject.SetActive(false);
+    }
+
+    private void CheckHealth()
+    {
+        if (playerHealth != null && playerHealth.IsDead() || (anomalyHealth != null && anomalyHealth.IsDead()))
+        {
+            EndGame();
+        }
     }
 }
