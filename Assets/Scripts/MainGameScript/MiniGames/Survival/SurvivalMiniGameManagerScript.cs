@@ -1,11 +1,18 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class SurvivalMiniGameManagerScript : MonoBehaviour, IMinigame
 {
 
     public CharacterHealthScript playerHealth;
     public CharacterHealthScript anomalyHealth;
+    
+    public GameObject winLoseTextContainer;
+    public GameObject winnerText;
+    public GameObject loserText;
+    
+    private float _shutDownGameDelay = 5.0f;
     
     private void Update()
     {
@@ -21,15 +28,33 @@ public class SurvivalMiniGameManagerScript : MonoBehaviour, IMinigame
 
     public void EndGame()
     {
-        CameraManager.instance.SwitchToPrimaryCamera();
+        winLoseTextContainer.SetActive(false);
+        winnerText.SetActive(false);
+        loserText.SetActive(false);
+        
         gameObject.SetActive(false);
+        
+        CameraManager.instance.SwitchToPrimaryCamera();
     }
 
     private void CheckHealth()
     {
-        if (playerHealth != null && playerHealth.IsDead() || (anomalyHealth != null && anomalyHealth.IsDead()))
+        bool playerIsDead = playerHealth.IsDead();
+        bool anomalyIsDead = anomalyHealth.IsDead();
+        
+        if (playerIsDead || anomalyIsDead)
         {
-            EndGame();
+            winLoseTextContainer.SetActive(true);
+            winnerText.SetActive(!playerIsDead);
+            loserText.SetActive(playerIsDead);
+            
+            StartCoroutine(ShutDownMinigameAfterDelay());
         }
+    }
+    
+    public IEnumerator ShutDownMinigameAfterDelay()
+    {
+        yield return new WaitForSeconds(_shutDownGameDelay);
+        EndGame();
     }
 }
