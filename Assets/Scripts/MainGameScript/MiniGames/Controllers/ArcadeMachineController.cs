@@ -14,7 +14,7 @@ public class ArcadeMachineController : MonoBehaviour
     {
         minigame = minigameBehaviour as IMinigame;
         
-        Debug.Log(minigame);
+        Debug.Log("MiniGame : " + minigame + "; This machine is : " + name);
         if (minigame == null)
         {
             Debug.LogError($"{name}: Assigned minigameBehaviour does not implement IMinigame.");
