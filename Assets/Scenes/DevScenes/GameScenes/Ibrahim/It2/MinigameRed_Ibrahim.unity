@@ -415,17 +415,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!114 &480799202 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8423280332910620810, guid: dec2b5d98772d3a428826209f0ede630, type: 3}
-  m_PrefabInstance: {fileID: 5978921625999077166}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &613669113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1325,6 +1314,17 @@ Transform:
   - {fileID: 1162202763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1586985073 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8423280332910620810, guid: dec2b5d98772d3a428826209f0ede630, type: 3}
+  m_PrefabInstance: {fileID: 5978921625999077166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1716652052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1716,7 +1716,7 @@ MonoBehaviour:
   allCameras:
   - {fileID: 1451884309}
   - {fileID: 18637101}
-  - {fileID: 480799202}
+  - {fileID: 1586985073}
   - {fileID: 1865067513}
   - {fileID: 1887205565}
 --- !u!4 &1880714352
