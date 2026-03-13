@@ -5,7 +5,12 @@ public class GameplayAreaRed : MonoBehaviour, IMinigame
 {
     [SerializeField] private CharacterHealthScript playerHealth;
     [SerializeField] private CharacterHealthScript anomalyHealth;
-    [SerializeField] private float shutDownGameDelay = 5f;
+    
+    public GameObject winLoseTextContainer;
+    public GameObject winnerText;
+    public GameObject loserText;
+    
+    private float shutDownGameDelay = 5f;
 
     private bool gameIsEnding = false;
     private Coroutine shutdownCoroutine;
@@ -42,6 +47,10 @@ public class GameplayAreaRed : MonoBehaviour, IMinigame
             shutdownCoroutine = null;
         }
 
+        winLoseTextContainer.SetActive(false);
+        winnerText.SetActive(false);
+        loserText.SetActive(false);
+
         gameObject.SetActive(false);
 
         if (CameraManager.instance != null)
@@ -63,6 +72,10 @@ public class GameplayAreaRed : MonoBehaviour, IMinigame
 
         if (playerIsDead || anomalyIsDead)
         {
+            winLoseTextContainer.SetActive(true);
+            winnerText.SetActive(!playerIsDead);
+            loserText.SetActive(playerIsDead);
+            
             gameIsEnding = true;
             shutdownCoroutine = StartCoroutine(ShutDownMinigameAfterDelay());
         }
