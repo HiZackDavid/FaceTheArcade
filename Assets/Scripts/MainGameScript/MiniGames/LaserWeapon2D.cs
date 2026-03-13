@@ -72,10 +72,7 @@ public class LaserWeapon2D : MonoBehaviour
         Debug.DrawRay(start, dir * maxDist, Color.magenta, 1f);
         RaycastHit2D hit = Physics2D.Raycast(start, dir, maxDist, combined);
 
-        Debug.LogError(
-            $"RAY start={start} dir={dir} dist={maxDist} mask={combined} " +
-            $"-> hit={(hit.collider ? hit.collider.name : "NONE")}"
-        );
+        
 
         Vector2 end = start + dir * maxDist;
 

@@ -2,43 +2,64 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// IA de l'Anomaly.
+/// Comportement:
+/// - Wander : errance aléatoire exactement comme EnemyMazeAI
+/// - FleeCommit : si le joueur est vu, l'Anomaly choisit UNE destination loin du joueur,
+///   désactive temporairement sa vision, fuit jusqu'à cette destination,
+///   puis réactive sa vision et reprend le Wander.
+/// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class AnomalyMazeAI : MonoBehaviour
 {
     [Header("Refs")]
     public MazeGridProvider2D grid;
-    public EnemyVision2D vision;          // utilise CanSeePlayerLOS() + InAggroRange()
-    public Transform player;              // optionnel: si vision.player est null
+    public EnemyVision2D vision;
+    public Transform playerOverride; // optionnel si vision.player non assigné
 
     [Header("Move")]
-    public float moveSpeed = 0.08f;
-    public float reachedCellDist = 0.10f;
+    public float moveSpeed = 4f;
+    public float reachedCellDist = 0.08f;
 
     [Header("Pathfinding")]
-    public float repathInterval = 0.35f;        // recalcul A* en flee
-    public float wanderRepathInterval = 0.6f;   // recalcul A* en wander
+    public float repathInterval = 0.35f;        // pour la fuite
+    public float wanderRepathInterval = 0.6f;   // pour l'errance
 
     [Header("Wander")]
-    public float minWanderDistance = 2f;
-    public int wanderPickTries = 200;
+    public float minWanderDistance = 6f;
+    public int wanderPickTries = 120;
 
     [Header("Flee")]
-    public int fleeSampleTries = 120;       // nb de cases random testées
-    public float fleeMinTilesAway = 10f;    // au moins X tiles loin du joueur (Manhattan)
-    public bool fleeWhenSeeOnly = true;     // true: fuit seulement si LOS, false: fuit si aggro aussi
+    public int fleeSampleTries = 150;           // nb de points testés pour trouver une bonne fuite
+    public float fleeMinTilesAway = 10f;        // distance mini au joueur
+    public bool disableVisionWhileFlee = true;  // demandé
+    public float visionReenableDelay = 0.5f;    // évite un retrigger instant
 
-    enum State { Wander, Flee }
+    [Header("Debug")]
+    public bool debugLogs = false;
+
+    float ScaleSafe() => Mathf.Max(0.0001f, grid.WorldScale);
+    float SpeedWorld() => moveSpeed / ScaleSafe();
+    float ReachedWorld() => reachedCellDist * ScaleSafe();
+
+    enum State { Wander, FleeCommit }
     State state = State.Wander;
 
     Rigidbody2D rb;
     System.Random rng;
 
     float repathTimer;
+    float visionCooldownTimer;
+
     List<Vector3Int> path;
     int pathIndex;
 
     Vector3Int wanderGoal;
     bool hasWanderGoal;
+
+    Vector3Int fleeGoal;
+    bool hasFleeGoal;
 
     static readonly Vector3Int[] Neigh4 =
     {
@@ -57,51 +78,41 @@ public class AnomalyMazeAI : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (grid == null || !grid.IsReady) return;
+        Transform target = (vision != null && vision.player != null) ? vision.player : playerOverride;
+        if (grid == null || !grid.IsReady || target == null)
+            return;
 
-        Transform target = (vision != null && vision.player != null) ? vision.player : player;
-        if (target == null) return;
+        if (visionCooldownTimer > 0f)
+            visionCooldownTimer -= Time.fixedDeltaTime;
 
-        bool see = vision != null ? vision.CanSeePlayerLOS() : true;
-        bool aggro = vision != null ? vision.InAggroRange() : true;
+        bool see = false;
+        if (vision != null && vision.enabled)
+            see = vision.CanSeePlayerLOS();
 
-        bool shouldFlee = fleeWhenSeeOnly ? see : (see || aggro);
-
-        // transitions
-        if (state == State.Wander && shouldFlee)
+        // Transition Wander -> FleeCommit
+        if (state == State.Wander && visionCooldownTimer <= 0f && see)
         {
-            state = State.Flee;
+            state = State.FleeCommit;
             path = null;
             pathIndex = 0;
             repathTimer = 0f;
-        }
-        else if (state == State.Flee && !aggro && !see)
-        {
-            state = State.Wander;
-            path = null;
-            pathIndex = 0;
-            hasWanderGoal = false;
-            repathTimer = 0f;
+            hasFleeGoal = false;
+
+            if (disableVisionWhileFlee && vision != null)
+                vision.enabled = false;
         }
 
-        if (state == State.Flee) UpdateFlee(target);
+        // Update état
+        if (state == State.FleeCommit) UpdateFleeCommit(target);
         else UpdateWander();
 
-        // Debug.Log($"Anomaly State={state} see={see} aggro={aggro}");
+        if (debugLogs)
+            Debug.Log($"[Anomaly] state={state} see={see} pathLen={(path == null ? 0 : path.Count)} idx={pathIndex}");
     }
 
-    void UpdateFlee(Transform target)
-    {
-        repathTimer -= Time.fixedDeltaTime;
-        if (repathTimer <= 0f)
-        {
-            repathTimer = repathInterval;
-            ComputeFleePath(target);
-        }
-
-        FollowPath();
-    }
-
+    /// <summary>
+    /// Wander identique à la logique de base de EnemyMazeAI
+    /// </summary>
     void UpdateWander()
     {
         repathTimer -= Time.fixedDeltaTime;
@@ -123,84 +134,73 @@ public class AnomalyMazeAI : MonoBehaviour
             repathTimer = wanderRepathInterval;
             ComputePathToCell(wanderGoal);
 
-            if (path == null || path.Count == 0)
+            if (path == null || path.Count < 2)
                 hasWanderGoal = false;
         }
 
-        FollowPath();
+        FollowPathOrStop();
     }
 
-    void ComputeFleePath(Transform target)
+    /// <summary>
+    /// L'Anomaly choisit un point de fuite loin du joueur,
+    /// s'y dirige, puis réactive sa vision une fois arrivée.
+    /// </summary>
+    void UpdateFleeCommit(Transform target)
     {
-        Vector3Int start = SnapToNearestWalkable(grid.WorldToCell(transform.position));
-        Vector3Int pCell = SnapToNearestWalkable(grid.WorldToCell(target.position));
-
-        Vector2Int size = grid.GridSize;
-
-        // Choisir une case walkable "loin du joueur"
-        Vector3Int best = start;
-        float bestScore = -999999f;
-
-        for (int i = 0; i < fleeSampleTries; i++)
+        // On choisit UNE destination de fuite une seule fois
+        if (!hasFleeGoal)
         {
-            int x = rng.Next(1, size.x - 1);
-            int y = rng.Next(1, size.y - 1);
-            var c = new Vector3Int(x, y, 0);
+            fleeGoal = PickFleeGoal(target);
+            hasFleeGoal = true;
 
-            if (!grid.IsWalkable(c)) continue;
+            ComputePathToCell(fleeGoal);
 
-            float dist = Mathf.Abs(c.x - pCell.x) + Mathf.Abs(c.y - pCell.y); // Manhattan
-            if (dist < fleeMinTilesAway) continue;
-
-            // bonus: préfère aussi s’éloigner du start pour éviter micro-mouvements
-            float fromStart = Mathf.Abs(c.x - start.x) + Mathf.Abs(c.y - start.y);
-            float score = dist + 0.15f * fromStart;
-
-            if (score > bestScore)
+            if (path == null || path.Count < 2)
             {
-                bestScore = score;
-                best = c;
+                hasFleeGoal = false;
+                rb.linearVelocity = Vector2.zero;
+                return;
             }
         }
 
-        // fallback si pas trouvé assez loin: prendre la plus loin possible
-        if (best == start)
+        FollowPathOrStop();
+
+        // Arrivé au point de fuite
+        if (path != null && path.Count > 0 && pathIndex >= path.Count - 1)
         {
-            for (int i = 0; i < fleeSampleTries; i++)
+            Vector2 endPos = grid.CellCenterWorld(path[path.Count - 1]);
+            if (Vector2.Distance(rb.position, endPos) <= ReachedWorld())
             {
-                int x = rng.Next(1, size.x - 1);
-                int y = rng.Next(1, size.y - 1);
-                var c = new Vector3Int(x, y, 0);
-                if (!grid.IsWalkable(c)) continue;
-
-                float dist = Mathf.Abs(c.x - pCell.x) + Mathf.Abs(c.y - pCell.y);
-                if (dist > bestScore)
-                {
-                    bestScore = dist;
-                    best = c;
-                }
-            }
-        }
-
-        path = AStar(start, best);
-        pathIndex = 0;
-
-        // si path impossible => essaye juste un pas "opposé"
-        if (path == null || path.Count == 0)
-        {
-            Vector3Int dir = new Vector3Int(
-                Math.Sign(start.x - pCell.x),
-                Math.Sign(start.y - pCell.y),
-                0
-            );
-
-            var n = start + dir;
-            if (grid.IsWalkable(n))
-            {
-                path = new List<Vector3Int> { start, n };
+                state = State.Wander;
+                path = null;
                 pathIndex = 0;
+                hasFleeGoal = false;
+                hasWanderGoal = false;
+
+                if (vision != null)
+                    vision.enabled = true;
+
+                visionCooldownTimer = visionReenableDelay;
             }
         }
+    }
+
+    void FollowPathOrStop()
+    {
+        if (path == null || path.Count < 2 || pathIndex >= path.Count)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        Vector3Int targetCell = path[pathIndex];
+        Vector2 targetPos = grid.CellCenterWorld(targetCell);
+
+        if (Vector2.Distance(rb.position, targetPos) <= ReachedWorld() && pathIndex < path.Count - 1)
+            pathIndex++;
+
+        Vector2 nextPos = Vector2.MoveTowards(rb.position, targetPos, SpeedWorld() * Time.fixedDeltaTime);
+        rb.MovePosition(nextPos);
     }
 
     void ComputePathToCell(Vector3Int goal)
@@ -209,25 +209,7 @@ public class AnomalyMazeAI : MonoBehaviour
         goal = SnapToNearestWalkable(goal);
 
         path = AStar(start, goal);
-        pathIndex = 0;
-    }
-
-    void FollowPath()
-    {
-        if (path == null || path.Count == 0)
-        {
-            rb.linearVelocity = Vector2.zero;
-            return;
-        }
-
-        Vector3Int targetCell = path[Mathf.Min(pathIndex, path.Count - 1)];
-        Vector2 targetPos = grid.CellCenterWorld(targetCell);
-
-        if (Vector2.Distance(rb.position, targetPos) <= reachedCellDist && pathIndex < path.Count - 1)
-            pathIndex++;
-
-        Vector2 next = Vector2.MoveTowards(rb.position, targetPos, moveSpeed * Time.fixedDeltaTime);
-        rb.MovePosition(next);
+        pathIndex = (path != null && path.Count > 1) ? 1 : 0;
     }
 
     void PickNewWanderGoal()
@@ -264,33 +246,95 @@ public class AnomalyMazeAI : MonoBehaviour
         hasWanderGoal = false;
     }
 
-    Vector3Int SnapToNearestWalkable(Vector3Int c)
+    Vector3Int PickFleeGoal(Transform target)
     {
-        if (grid.IsWalkable(c)) return c;
+        Vector3Int start = SnapToNearestWalkable(grid.WorldToCell(transform.position));
+        Vector3Int playerCell = SnapToNearestWalkable(grid.WorldToCell(target.position));
+        Vector2Int size = grid.GridSize;
+
+        Vector3Int best = start;
+        float bestScore = -999999f;
+
+        for (int i = 0; i < fleeSampleTries; i++)
+        {
+            int x = rng.Next(1, size.x - 1);
+            int y = rng.Next(1, size.y - 1);
+            var c = new Vector3Int(x, y, 0);
+            if (!grid.IsWalkable(c)) continue;
+
+            float distToPlayer = Mathf.Abs(c.x - playerCell.x) + Mathf.Abs(c.y - playerCell.y);
+            float distFromStart = Mathf.Abs(c.x - start.x) + Mathf.Abs(c.y - start.y);
+
+            // on ignore les points trop proches du joueur OU trop proches de l'anomaly
+            if (distToPlayer < fleeMinTilesAway) continue;
+            if (distFromStart < minWanderDistance * 1.5f) continue;
+
+            // on privilégie surtout l'éloignement du joueur
+            float score = distToPlayer * 2f + distFromStart * 0.5f;
+
+            if (score > bestScore)
+            {
+                bestScore = score;
+                best = c;
+            }
+        }
+
+        // fallback : le plus loin possible du joueur
+        if (best == start)
+        {
+            for (int i = 0; i < fleeSampleTries; i++)
+            {
+                int x = rng.Next(1, size.x - 1);
+                int y = rng.Next(1, size.y - 1);
+                var c = new Vector3Int(x, y, 0);
+                if (!grid.IsWalkable(c)) continue;
+
+                float distToPlayer = Mathf.Abs(c.x - playerCell.x) + Mathf.Abs(c.y - playerCell.y);
+                if (distToPlayer > bestScore)
+                {
+                    bestScore = distToPlayer;
+                    best = c;
+                }
+            }
+        }
+
+        return best;
+    }
+
+    Vector3Int SnapToNearestWalkable(Vector3Int start)
+    {
+        if (grid.IsWalkable(start)) return start;
+
+        Vector2Int size = grid.GridSize;
+        bool InBounds(Vector3Int c) => c.x >= 0 && c.y >= 0 && c.x < size.x && c.y < size.y;
 
         var q = new Queue<Vector3Int>();
         var seen = new HashSet<Vector3Int>();
-        q.Enqueue(c);
-        seen.Add(c);
 
+        q.Enqueue(start);
+        seen.Add(start);
+
+        int maxSteps = size.x * size.y;
         int steps = 0;
-        while (q.Count > 0 && steps++ < 30)
+
+        while (q.Count > 0 && steps++ < maxSteps)
         {
             var cur = q.Dequeue();
             foreach (var d in Neigh4)
             {
                 var n = cur + d;
-                if (seen.Contains(n)) continue;
-                seen.Add(n);
+                if (!InBounds(n) || seen.Contains(n)) continue;
                 if (grid.IsWalkable(n)) return n;
+                seen.Add(n);
                 q.Enqueue(n);
             }
         }
 
-        return c;
+        return start;
     }
 
-    // ---------------- A* ----------------
+    // ========================= A* =========================
+
     List<Vector3Int> AStar(Vector3Int start, Vector3Int goal)
     {
         Vector2Int size = grid.GridSize;

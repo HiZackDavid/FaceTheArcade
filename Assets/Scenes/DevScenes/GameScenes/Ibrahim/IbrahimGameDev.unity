@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 62178561}
   - component: {fileID: 62178562}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,9 +323,9 @@ GameObject:
   - component: {fileID: 105828848}
   - component: {fileID: 105828845}
   - component: {fileID: 105828852}
-  - component: {fileID: 105828854}
   - component: {fileID: 105828853}
-  m_Layer: 10
+  - component: {fileID: 105828854}
+  m_Layer: 12
   m_Name: Anomaly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,16 +547,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 1273147625}
   vision: {fileID: 105828853}
-  player: {fileID: 105828844}
-  moveSpeed: 0.08
-  reachedCellDist: 0.1
+  playerOverride: {fileID: 1348678106}
+  moveSpeed: 0.005
+  reachedCellDist: 0.08
   repathInterval: 0.35
   wanderRepathInterval: 0.6
-  minWanderDistance: 2
-  wanderPickTries: 200
-  fleeSampleTries: 120
-  fleeMinTilesAway: 10
-  fleeWhenSeeOnly: 1
+  minWanderDistance: 6
+  wanderPickTries: 120
+  fleeSampleTries: 300
+  fleeMinTilesAway: 14
+  disableVisionWhileFlee: 1
+  visionReenableDelay: 2
+  debugLogs: 0
 --- !u!1 &211523464
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 211523465}
   - component: {fileID: 211523466}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: LaserLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +707,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 324463651}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +738,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 324849175}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,7 +835,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2115741351
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 100
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -845,8 +847,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.0014152527
+        time: 1
+        value: 0.012752533
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1075,11 +1077,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3491649108765406, guid: 620efedf1779a3a459768be93739258a, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3491649108765406, guid: 620efedf1779a3a459768be93739258a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3399993384387270665, guid: 620efedf1779a3a459768be93739258a, type: 3}
       propertyPath: m_Color.b
@@ -1141,6 +1143,10 @@ PrefabInstance:
       propertyPath: speed
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8817260082970353904, guid: 620efedf1779a3a459768be93739258a, type: 3}
+      propertyPath: characterHealthScript
+      value: 
+      objectReference: {fileID: 105828845}
     - target: {fileID: 8962318402912589430, guid: 620efedf1779a3a459768be93739258a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.909
@@ -1241,6 +1247,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3491649108765406, guid: 620efedf1779a3a459768be93739258a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1609762243}
+    - targetCorrespondingSourceObject: {fileID: 3491649108765406, guid: 620efedf1779a3a459768be93739258a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1609762250}
   m_SourcePrefab: {fileID: 100100000, guid: 620efedf1779a3a459768be93739258a, type: 3}
 --- !u!1 &1041651604
 GameObject:
@@ -1252,7 +1261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1041651605}
   - component: {fileID: 1041651607}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1404,7 +1413,7 @@ MonoBehaviour:
     m_Bits: 128
   hitMask:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 6144
   rangeWorld: 5
   damage: 10
   cooldown: 0.25
@@ -1422,7 +1431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1510224595}
   - component: {fileID: 1510224596}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1589,6 +1598,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 20
+--- !u!114 &1609762250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609762220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fe9c1745f2bdd4291e601366c22352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 1738557050}
+  laserOrigin: {fileID: 0}
 --- !u!1 &1656135661
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,7 +1622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1656135662}
   - component: {fileID: 1656135663}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: LaserLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1738,7 +1761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1738557049}
   - component: {fileID: 1738557050}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: LaserLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1888,13 +1911,14 @@ GameObject:
   - component: {fileID: 1833710947}
   - component: {fileID: 1833710946}
   - component: {fileID: 1833710945}
-  m_Layer: 9
+  - component: {fileID: 1833710957}
+  m_Layer: 11
   m_Name: IA (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1833710944
 Transform:
   m_ObjectHideFlags: 0
@@ -2028,7 +2052,7 @@ MonoBehaviour:
   wanderRepathInterval: 0.4
   minWanderDistance: 2
   wanderPickTries: 200
-  stopDistance: 0.35
+  stopDistance: 0.2
   debugLogs: 0
 --- !u!114 &1833710952
 MonoBehaviour:
@@ -2191,6 +2215,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1833710957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833710943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fe9c1745f2bdd4291e601366c22352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 211523466}
+  laserOrigin: {fileID: 0}
 --- !u!1 &1944733347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,7 +2239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1944733348}
   - component: {fileID: 1944733349}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2268,7 +2306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2042807412}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2368,13 +2406,14 @@ GameObject:
   - component: {fileID: 2134729972}
   - component: {fileID: 2134729971}
   - component: {fileID: 2134729970}
-  m_Layer: 9
+  - component: {fileID: 2134729982}
+  m_Layer: 11
   m_Name: IA (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2134729969
 Transform:
   m_ObjectHideFlags: 0
@@ -2508,7 +2547,7 @@ MonoBehaviour:
   wanderRepathInterval: 0.4
   minWanderDistance: 2
   wanderPickTries: 200
-  stopDistance: 0.35
+  stopDistance: 0.2
   debugLogs: 0
 --- !u!114 &2134729977
 MonoBehaviour:
@@ -2671,6 +2710,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2134729982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134729968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fe9c1745f2bdd4291e601366c22352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 1656135663}
+  laserOrigin: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
