@@ -3,35 +3,68 @@ using UnityEngine;
 
 public class GameplayAreaRed : MonoBehaviour, IMinigame
 {
-    public void EndGame()
-    {
-        throw new System.NotImplementedException();
-    }
+    [SerializeField] private CharacterHealthScript playerHealth;
+    [SerializeField] private CharacterHealthScript anomalyHealth;
+    [SerializeField] private float shutDownGameDelay = 5f;
 
-    public void ResetGame()
-    {
-        throw new System.NotImplementedException();
-    }
+    private bool gameIsEnding = false;
+    private Coroutine shutdownCoroutine;
 
-    public IEnumerator ShutDownMinigameAfterDelay()
+    private void Update()
     {
-        throw new System.NotImplementedException();
+        if (!gameObject.activeInHierarchy || gameIsEnding) return;
+
+        CheckHealth();
     }
 
     public void StartGame()
     {
-        throw new System.NotImplementedException();
+        ResetGame();
+        gameObject.SetActive(true);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void ResetGame()
     {
-        
+        gameIsEnding = false;
+
+        if (shutdownCoroutine != null)
+        {
+            StopCoroutine(shutdownCoroutine);
+            shutdownCoroutine = null;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EndGame()
     {
-        
+        if (shutdownCoroutine != null)
+        {
+            StopCoroutine(shutdownCoroutine);
+            shutdownCoroutine = null;
+        }
+
+        gameObject.SetActive(false);
+
+        if (CameraManager.instance != null)
+            CameraManager.instance.SwitchToPrimaryCamera();
+    }
+
+    public IEnumerator ShutDownMinigameAfterDelay()
+    {
+        yield return new WaitForSeconds(shutDownGameDelay);
+        EndGame();
+    }
+
+    private void CheckHealth()
+    {
+        if (playerHealth == null || anomalyHealth == null) return;
+
+        bool playerIsDead = playerHealth.IsDead();
+        bool anomalyIsDead = anomalyHealth.IsDead();
+
+        if (playerIsDead || anomalyIsDead)
+        {
+            gameIsEnding = true;
+            shutdownCoroutine = StartCoroutine(ShutDownMinigameAfterDelay());
+        }
     }
 }
