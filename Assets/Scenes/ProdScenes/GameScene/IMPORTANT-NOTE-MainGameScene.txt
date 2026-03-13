@@ -1,3 +1,0 @@
-MainGameScene fonctionne pas?? Problème avec la camera 1er personne 
-
-Mais MainsGameScene2 fonctionne!! :) Continuer à utiliser celle-là!!
