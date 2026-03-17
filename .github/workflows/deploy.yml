@@ -10,6 +10,18 @@ jobs:
     name: Build Project
     runs-on: ubuntu-latest
     steps:
+
+      # Free space in the VM
+      - name: Free Disk Space
+        run: |
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/share/dotnet 
+          sudo rm -rf /opt/ghc 
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY" 
+          docker system prune -af 
+          df -h # Shows how much space is available
+    
       - name: Checkout code
         uses: actions/checkout@v4
         with:
