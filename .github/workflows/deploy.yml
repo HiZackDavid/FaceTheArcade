@@ -3,14 +3,13 @@ name: Unity Build and Deploy to itch.io
 on:
   push:
     branches:
-      - Déploiement-sur-itch.io
+      - main
 
 jobs:
   build:
     name: Build Project
     runs-on: ubuntu-latest
     steps:
-
       # Free space in the VM
       - name: Free Disk Space
         run: |
@@ -45,6 +44,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: StandaloneWindows64
+          buildName: FaceTheArcade
 
       # Stores the build, inside the build/StandaloneWindows64 folder, with the name build-Windows
       - name: Upload Build Artifact
