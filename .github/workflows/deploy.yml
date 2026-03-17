@@ -1,0 +1,85 @@
+name: Unity Build and Deploy to itch.io
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Project
+    runs-on: ubuntu-latest
+    steps:
+      # Free space in the VM
+      - name: Free Disk Space
+        run: |
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/share/dotnet 
+          sudo rm -rf /opt/ghc 
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY" 
+          docker system prune -af 
+          df -h # Shows how much space is available
+    
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          lfs: true # For large files
+
+      # Uses a cache so that the Library folder does not need to be regenerated everytime
+      - name: Cache Library
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-StandaloneWindows64
+          restore-keys: |
+            Library-
+
+      # The build process for a Unity Build
+      - name: Build Unity Project
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: StandaloneWindows64
+          buildName: FaceTheArcade
+
+      # Stores the build, inside the build/StandaloneWindows64 folder, with the name build-Windows
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-Windows
+          path: build/StandaloneWindows64
+
+  deploy:
+    name: Package and Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+
+      # Get the build using the name build-Windows, that was stored in the last step of the last job. It's placed in a new path in the new VM
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-Windows
+          path: ./temp-build
+
+      # Puts all the build files in a .zip called face-the-arcade-build.zip
+      - name: Zip Build
+        run: |
+          cd temp-build
+          zip -r ../face-the-arcade-build.zip .
+          cd ..
+
+      # Installs the official itch.io Butler tool
+      - name: Setup Butler
+        uses: remarkablegames/setup-butler@v2
+
+      # Deploys to itch.io
+      - name: Publish to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          butler push ./face-the-arcade-build.zip jamc8/face-the-arcade:windows
