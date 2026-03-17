@@ -61,11 +61,13 @@ jobs:
           zip -r ../face-the-arcade-build.zip .
           cd ..
 
+      # Installs the official itch.io Butler tool
+      - name: Setup Butler
+        uses: remarkablegames/setup-butler@v2
+
       # Deploys to itch.io
       - name: Publish to itch.io
-        uses: manleyjster/itch-publish@v1.4.3
-        with:
-          build_path: './face-the-arcade-build.zip'
-          # Use the appropriate channel (windows, mac, linux)
-          itch_target: 'jamc8/face-the-arcade:windows'
-          itch_token: ${{ secrets.BUTLER_API_KEY }}
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          butler push ./face-the-arcade-build.zip jamc8/face-the-arcade:windows
