@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class PlayerMiniGameMovement : MonoBehaviour
@@ -17,6 +18,8 @@ public abstract class PlayerMiniGameMovement : MonoBehaviour
     protected Rigidbody2D rb;
     protected Vector2 movementInput;
 
+    public event Action OnPlayerMoved;
+    private bool _playerMoved = false;
 
     protected virtual void Awake()
     {
@@ -45,6 +48,8 @@ public abstract class PlayerMiniGameMovement : MonoBehaviour
         // Convert to world movement based on player orientation
         worldMovement = (transform.right * movementInput.x) + (transform.up * movementInput.y);
         rb.linearVelocity = worldMovement * speed;
+        
+        if(!_playerMoved && worldMovement != Vector2.zero) OnPlayerMoved?.Invoke();
     }
 
     protected virtual void OnEnable()
@@ -57,6 +62,8 @@ public abstract class PlayerMiniGameMovement : MonoBehaviour
     protected virtual void OnDisable()
     {
         playerControls.Disable();
+        _playerMoved = false;
+        OnPlayerMoved = null;
     }
 
 }
