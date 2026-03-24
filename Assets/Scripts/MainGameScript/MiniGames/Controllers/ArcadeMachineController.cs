@@ -13,12 +13,6 @@ public class ArcadeMachineController : MonoBehaviour
     private void Awake()
     {
         minigame = minigameBehaviour as IMinigame;
-        
-        Debug.Log("MiniGame : " + minigame + "; This machine is : " + name);
-        if (minigame == null)
-        {
-            Debug.LogError($"{name}: Assigned minigameBehaviour does not implement IMinigame.");
-        }
     }
 
     public void Interact()
