@@ -9,11 +9,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Timer dayTimer;
 
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private GameObject player;
+
     [SerializeField] private int score = 0;
 
 
     public UnityEvent startMachines;
     public UnityEvent stopMachines;
+
+    public UnityEvent fadeIn;
 
     private bool wasPaused = false;
 
@@ -62,13 +67,15 @@ public class GameManager : MonoBehaviour
         startMachines.Invoke();
     }
 
-    public void PauseGame()
+    public void PauseGame(bool isReset = false)
     {
 
         dayTimer.StopTimer();
         stopMachines.Invoke();
         ControllerManager.instance.DeactivateController();
-        wasPaused = true;
+
+        if (!isReset)
+            wasPaused = true;
 
         StartCoroutine(waitForShowMenu());
 
@@ -78,11 +85,20 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitUntil(() => !CameraManager.instance.isInTransition());
         UIManager.instace.ShowMainMenu();
+        ControllerManager.instance.DeactivateController();
     }
 
     public void StopGame()
     {
         stopMachines.Invoke();
+        fadeIn.Invoke();
+    }
+
+    public void ResetPlayerPosition()
+    {
+        Debug.Log("POSSSS");
+        player.transform.position = spawnPoint.transform.position;
+        player.transform.rotation = spawnPoint.transform.rotation;
     }
 
     public void CloseGame()
