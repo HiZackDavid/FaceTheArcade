@@ -46,6 +46,11 @@ public class Timer : MonoBehaviour
         paused = true;
     }
 
+    public void ResumeTimer()
+    {
+        paused = false;
+    }
+
     public float GetTimeLeft() => timeLeft;
 
 

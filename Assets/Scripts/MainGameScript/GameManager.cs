@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent startMachines;
     public UnityEvent stopMachines;
+
+    private bool wasPaused = false;
 
     private void Awake()
     {
@@ -46,9 +49,35 @@ public class GameManager : MonoBehaviour
         UIManager.instace.ShowMainHUD();
         ControllerManager.instance.ActivateController();
 
-        dayTimer.StartTimer();
+        if (wasPaused)
+        {
+            wasPaused = false;
+            dayTimer.ResumeTimer();
+        }
+        else
+        {
+            dayTimer.StartTimer();
+        }
 
         startMachines.Invoke();
+    }
+
+    public void PauseGame()
+    {
+
+        dayTimer.StopTimer();
+        stopMachines.Invoke();
+        ControllerManager.instance.DeactivateController();
+        wasPaused = true;
+
+        StartCoroutine(waitForShowMenu());
+
+    }
+
+    IEnumerator waitForShowMenu()
+    {
+        yield return new WaitUntil(() => !CameraManager.instance.isInTransition());
+        UIManager.instace.ShowMainMenu();
     }
 
     public void StopGame()
