@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,8 +8,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Timer dayTimer;
 
-    [SerializeField] private int cheatCodeAmount = 0;
+    [SerializeField] private int score = 0;
 
+
+    public UnityEvent startMachines;
+    public UnityEvent stopMachines;
 
     private void Awake()
     {
@@ -20,10 +24,14 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this);
         }
-
     }
 
-    public int GetCheatCodes() => cheatCodeAmount;
+    public int GetScore() => score;
+    public void IncScoreBy(int inc)
+    {
+        score += inc;
+        UIManager.instace.OnScoreUpdate(score);
+    }
 
     private void Start()
     {
@@ -39,6 +47,13 @@ public class GameManager : MonoBehaviour
         ControllerManager.instance.ActivateController();
 
         dayTimer.StartTimer();
+
+        startMachines.Invoke();
+    }
+
+    public void StopGame()
+    {
+        stopMachines.Invoke();
     }
 
     public void CloseGame()

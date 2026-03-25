@@ -67,7 +67,7 @@ public class Timer : MonoBehaviour
                 }
             }
 
-        } else if (timeLeft == 0)
+        } else if (!paused && timeLeft == 0)
         {
             OneTimerEnd();
         }
@@ -75,6 +75,7 @@ public class Timer : MonoBehaviour
 
     private void OneTimerEnd()
     {
+        paused = true;
         onTimerStopped.Invoke();
         if (!oneShot)
             StartTimer(waitTime);

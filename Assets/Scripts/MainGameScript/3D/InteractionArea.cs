@@ -17,14 +17,27 @@ public class InteractionArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SetOutline(other.gameObject);
-        isInteractuable = true;
+        ArcadeMachineController controller = other.GetComponent<ArcadeMachineController>();
+        if (controller)
+        {
+            if (controller.isAvailable())
+            {
+                SetOutline(other.gameObject);
+                isInteractuable = true;
+            }
+        }
+        else
+        {
+            SetOutline(other.gameObject);
+            isInteractuable = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         RemoveOutline(other.gameObject);
         isInteractuable = false;
+        //curObject = null;
     }
 
     private void SetOutline(GameObject target) 

@@ -801,6 +801,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6410574391955895357}
     m_Modifications:
+    - target: {fileID: 85253555162830733, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
+      propertyPath: onSecondPassed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6431344682996793185}
+    - target: {fileID: 85253555162830733, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6431344682996793185}
     - target: {fileID: 1416852519262404311, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.7599981
@@ -889,6 +897,10 @@ MonoBehaviour:
   arcadeCamera: {fileID: 7628999014031271722}
   minigameBehaviour: {fileID: 7460136765548957647}
   startGameDelay: 2.3
+  pointsPerSecond: 5
+  minTimeForBreaking: 15
+  maxTimeForBreaking: 30
+  machineTimer: {fileID: 0}
 --- !u!1001 &332240235053990171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2309,6 +2321,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7345387734723793019, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
+      propertyPath: onSecondPassed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6838995120072273447}
+    - target: {fileID: 7345387734723793019, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6838995120072273447}
     - target: {fileID: 9182875661962277735, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
       propertyPath: arcadeCamera
       value: 
@@ -2348,6 +2368,10 @@ MonoBehaviour:
   arcadeCamera: {fileID: 7931267343931224184}
   minigameBehaviour: {fileID: 3514770892677230953}
   startGameDelay: 1
+  pointsPerSecond: 5
+  minTimeForBreaking: 15
+  maxTimeForBreaking: 30
+  machineTimer: {fileID: 0}
 --- !u!4 &7977023002585257740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6800331008555050738, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
@@ -3037,11 +3061,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArcadePC
       objectReference: {fileID: 0}
+    - target: {fileID: 8769070827744964236, guid: 9381a44d2553f644ca6df76e034a4f3b, type: 3}
+      propertyPath: m_TagString
+      value: Selectable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8769070827744964236, guid: 9381a44d2553f644ca6df76e034a4f3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4846272519859204557}
   m_SourcePrefab: {fileID: 100100000, guid: 9381a44d2553f644ca6df76e034a4f3b, type: 3}
+--- !u!1 &1780391330804855131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8769070827744964236, guid: 9381a44d2553f644ca6df76e034a4f3b, type: 3}
+  m_PrefabInstance: {fileID: 6990931386948673495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &4846272519859204557
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780391330804855131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.43892312, y: 0.5228381, z: 0.5571401}
+  m_Center: {x: 0.14020216, y: 0.098430276, z: -0.030547857}
 --- !u!4 &8065794281586821903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1075148806857184472, guid: 9381a44d2553f644ca6df76e034a4f3b, type: 3}
@@ -3447,6 +3504,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6410574391955895357}
     m_Modifications:
+    - target: {fileID: 236913003909975577, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
+      propertyPath: onSecondPassed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3748819321352142629}
+    - target: {fileID: 236913003909975577, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3748819321352142629}
     - target: {fileID: 5775122820023753628, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
       propertyPath: m_Name
       value: ArcadeMachineRed
@@ -3530,6 +3595,10 @@ MonoBehaviour:
   arcadeCamera: {fileID: 8423280332910620810}
   minigameBehaviour: {fileID: 6229964165869340296}
   startGameDelay: 2.3
+  pointsPerSecond: 5
+  minTimeForBreaking: 15
+  maxTimeForBreaking: 30
+  machineTimer: {fileID: 0}
 --- !u!4 &2892264070778188281 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6588356376575394086, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
