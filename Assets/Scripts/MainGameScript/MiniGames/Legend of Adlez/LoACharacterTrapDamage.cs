@@ -1,26 +1,36 @@
-using System;
 using UnityEngine;
 
-public class LoACharacterTrapDamage : MonoBehaviour
+namespace MainGameScript.MiniGames.Legend_of_Adlez
 {
-    [SerializeField] private CharacterHealthScript characterHealthScript;
-    [SerializeField] private float trapDamage = 20f;
-
-    private int trapLayer;
-
-    void Awake()
+    public class LoACharacterTrapDamage : MonoBehaviour
     {
-        trapLayer = LayerMask.NameToLayer("LoATrap");
-    }
+        [SerializeField] private CharacterHealthScript characterHealthScript;
+        [SerializeField] private float trapDamage = 20f;
 
-    void Reset()
-    {
-        characterHealthScript = GetComponent<CharacterHealthScript>();
-    }
+        private int _trapLayer;
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer != trapLayer) return;
-        characterHealthScript.TakeDamage(trapDamage);
+        void Awake()
+        {
+            _trapLayer = LayerMask.NameToLayer("LoATrap");
+        }
+
+        void Reset()
+        {
+            characterHealthScript = GetComponent<CharacterHealthScript>();
+        }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            Debug.Log($"Trigger entered with: {other.name}, layer = {LayerMask.LayerToName(other.gameObject.layer)}");
+            if (other.gameObject.layer != _trapLayer) return;
+        
+            Debug.Log($"Taking trap damage from: {other.name}");
+            characterHealthScript.TakeDamage(trapDamage);
+        }
+    
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            Debug.Log($"Trigger exited with: {other.name}, layer = {LayerMask.LayerToName(other.gameObject.layer)}");
+        }
     }
 }
