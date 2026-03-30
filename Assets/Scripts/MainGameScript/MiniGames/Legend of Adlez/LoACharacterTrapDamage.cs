@@ -21,16 +21,10 @@ namespace MainGameScript.MiniGames.Legend_of_Adlez
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log($"Trigger entered with: {other.name}, layer = {LayerMask.LayerToName(other.gameObject.layer)}");
             if (other.gameObject.layer != _trapLayer) return;
         
-            Debug.Log($"Taking trap damage from: {other.name}");
             characterHealthScript.TakeDamage(trapDamage);
         }
-    
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            Debug.Log($"Trigger exited with: {other.name}, layer = {LayerMask.LayerToName(other.gameObject.layer)}");
-        }
+        
     }
 }

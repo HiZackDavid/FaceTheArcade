@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.071, y: 0, z: 0}
-  m_LocalScale: {x: 0.02, y: 0.019999998, z: 0.019999998}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8767402240302369885}
   - {fileID: 2760039207990881094}
@@ -102,9 +102,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 2027048965
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6422636974567714803, guid: b15b41a1f8a06c445b97450683a70742, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!50 &4961771170781547743
 Rigidbody2D:
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   playerGraphics: {fileID: 8767402240302369885}
-  speed: 4
+  speed: 6
 --- !u!114 &192984176409329881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 3078415636390160132}
   - component: {fileID: 144976900236197779}
   - component: {fileID: 7131929468246004302}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FeetHurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a872d722785ca9d4a854ac4b0d1702fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterHealthScript: {fileID: 0}
+  characterHealthScript: {fileID: 192984176409329881}
   trapDamage: 10
 --- !u!1 &3468968299891674547
 GameObject:
@@ -360,7 +360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2760039207990881094}
   - component: {fileID: 7692427222744646631}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

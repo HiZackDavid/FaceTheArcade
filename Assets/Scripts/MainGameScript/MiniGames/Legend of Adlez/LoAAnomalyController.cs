@@ -70,6 +70,15 @@ public class LoAAnomalyController : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
         }
     }
+    
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (currentState == HeartMonsterState.Charge)
+        {
+            rb.linearVelocity = Vector2.zero;
+            ChangeState(HeartMonsterState.Recover);
+        }
+    }
 
     void UpdateIdle()
     {

@@ -3,23 +3,37 @@ using UnityEngine;
 
 public class LoAMonsterDamageZone : MonoBehaviour
 {
-    [SerializeField] private float contactDamage = 15f;
+    [SerializeField] private float contactDamage = 20f;
 
-    private int playerLayer;
+    private int _playerLayer;
 
     private void Awake()
     {
-        playerLayer = LayerMask.NameToLayer("LoAPlayer");
+        _playerLayer = LayerMask.NameToLayer("LoAPlayerHurtbox");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer != playerLayer) return;
+        Debug.Log("Monster zone touched: " + other.name + " | layer = " + LayerMask.LayerToName(other.gameObject.layer));
+        
+        if (other.gameObject.layer != _playerLayer) return;
+        
+        Debug.Log("The monster touched a player");
 
-        CharacterHealthScript playerHealth = other.GetComponent<CharacterHealthScript>();
-        if (playerHealth != null)
+        CharacterHealthScript health = other.GetComponent<CharacterHealthScript>();
+        
+        if (health == null)
         {
-            playerHealth.TakeDamage(contactDamage);
+            health = other.GetComponentInParent<CharacterHealthScript>();
         }
+
+        if (health == null)
+        {
+            Debug.LogWarning("No CharacterHealthScript found on player.");
+            return;
+        }
+        
+        Debug.Log("Monster dealt damage.");
+        health.TakeDamage(contactDamage);
     }
 }
