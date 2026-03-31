@@ -35,9 +35,11 @@ public class InteractionArea : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        RemoveOutline(other.gameObject);
-        isInteractuable = false;
-        //curObject = null;
+        if (curObject != null)
+        {
+            RemoveOutline(other.gameObject);
+            isInteractuable = false;
+        }
     }
 
     private void SetOutline(GameObject target) 
@@ -72,6 +74,7 @@ public class InteractionArea : MonoBehaviour
             }
 
             curObject = target;
+            Debug.Log(curObject.name);
             UIManager.instace.showHideableHUD();
         }
     }
@@ -100,6 +103,8 @@ public class InteractionArea : MonoBehaviour
                     outline.enabled = false;
             }
 
+            Debug.Log("EXIT: " + curObject.name);
+            curObject = null;
             UIManager.instace.hideHideableHUD();
         }
 
