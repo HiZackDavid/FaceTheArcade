@@ -374,6 +374,37 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &802374181430198061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7049149082005192131}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7049149082005192131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802374181430198061}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3, y: 0.778, z: -0.688}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4045057258732264464}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1253276190748579361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2897,6 +2928,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7049149082005192131}
   - {fileID: 2120588342604906137}
   - {fileID: 8875958564040569400}
   - {fileID: 6732705104968539593}
@@ -3246,6 +3278,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6410574391955895357}
     m_Modifications:
+    - target: {fileID: 85253555162830733, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
+      propertyPath: onSecondPassed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6431344682996793185}
+    - target: {fileID: 85253555162830733, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6431344682996793185}
     - target: {fileID: 1416852519262404311, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.7599981
@@ -3303,6 +3343,9 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1416852519262404311, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 403331976671715465}
+    - targetCorrespondingSourceObject: {fileID: 1416852519262404311, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7331593605983824527}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1793131325288408173, guid: 3253a3c61ecddbb4586d82737128fc52, type: 3}
@@ -3334,6 +3377,10 @@ MonoBehaviour:
   arcadeCamera: {fileID: 7628999014031271722}
   minigameBehaviour: {fileID: 7460136765548957647}
   startGameDelay: 2.3
+  pointsPerSecond: 5
+  minTimeForBreaking: 15
+  maxTimeForBreaking: 30
+  machineTimer: {fileID: 0}
 --- !u!1001 &332240235053990171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3344,19 +3391,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 10.858652
+      value: 13.073624
       objectReference: {fileID: 0}
     - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
-      value: 12.829077
+      value: 12.569478
       objectReference: {fileID: 0}
     - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
-      value: 13.421134
+      value: 12.656105
       objectReference: {fileID: 0}
     - target: {fileID: 886124241140634868, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
-      value: 12.1542
+      value: 11.637566
       objectReference: {fileID: 0}
     - target: {fileID: 2435327857818738735, guid: 325713d4ab6bde34f9f7b09ce3ea5752, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3983,7 +4030,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3884059748707764623, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6800331008555050738, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
       insertIndex: -1
@@ -4127,7 +4175,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3884059748707764623, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6800331008555050738, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
       insertIndex: -1
@@ -4501,7 +4550,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6007612676604041197, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6588356376575394086, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
       insertIndex: -1
@@ -4878,6 +4928,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7345387734723793019, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
+      propertyPath: onSecondPassed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6838995120072273447}
+    - target: {fileID: 7345387734723793019, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6838995120072273447}
     - target: {fileID: 9182875661962277735, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
       propertyPath: arcadeCamera
       value: 
@@ -4917,6 +4975,10 @@ MonoBehaviour:
   arcadeCamera: {fileID: 7931267343931224184}
   minigameBehaviour: {fileID: 3514770892677230953}
   startGameDelay: 1
+  pointsPerSecond: 5
+  minTimeForBreaking: 15
+  maxTimeForBreaking: 30
+  machineTimer: {fileID: 0}
 --- !u!4 &7977023002585257740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6800331008555050738, guid: 5d0f7420b37a2954bb26b2ed93118c9b, type: 3}
@@ -5085,6 +5147,112 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8183375757040943347, guid: 4a256ca3516644047bfd93915394b842, type: 3}
   m_PrefabInstance: {fileID: 3944085711711497475}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4721944965057571077
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1316638080242009684}
+    m_Modifications:
+    - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: onSecondPassed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: onSecondPassed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6431344682996793185}
+    - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6431344682996793185}
+    - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: onSecondPassed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onMachineTimerSecond
+      objectReference: {fileID: 0}
+    - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onMachineTimerFinished
+      objectReference: {fileID: 0}
+    - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: onSecondPassed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ArcadeMachineController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ArcadeMachineController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 512034971480445421, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908742888438991244, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908742888438991244, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908742888438991244, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908742888438991244, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908742888438991244, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908742888438991244, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908742888438991244, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908742888438991244, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908742888438991244, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908742888438991244, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272918270899963929, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+      propertyPath: m_Name
+      value: Timer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+--- !u!4 &403331976671715465 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4908742888438991244, guid: 9dcb62e0e69791d4ba25bdedf58806e0, type: 3}
+  m_PrefabInstance: {fileID: 4721944965057571077}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4805966853554504042
 PrefabInstance:
@@ -5479,7 +5647,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6007612676604041197, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6588356376575394086, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
       insertIndex: -1
@@ -5891,7 +6060,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6007612676604041197, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6588356376575394086, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
       insertIndex: -1
@@ -5914,6 +6084,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6410574391955895357}
     m_Modifications:
+    - target: {fileID: 236913003909975577, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
+      propertyPath: onSecondPassed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3748819321352142629}
+    - target: {fileID: 236913003909975577, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
+      propertyPath: onTimerStopped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3748819321352142629}
     - target: {fileID: 5775122820023753628, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
       propertyPath: m_Name
       value: ArcadeMachineRed
@@ -5997,6 +6175,10 @@ MonoBehaviour:
   arcadeCamera: {fileID: 8423280332910620810}
   minigameBehaviour: {fileID: 6229964165869340296}
   startGameDelay: 2.3
+  pointsPerSecond: 5
+  minTimeForBreaking: 15
+  maxTimeForBreaking: 30
+  machineTimer: {fileID: 0}
 --- !u!4 &2892264070778188281 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6588356376575394086, guid: 2f25ac7718257cb46bf5cd38d31e7d0a, type: 3}
