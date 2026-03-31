@@ -15,6 +15,8 @@ public class GameplayAreaRed : MonoBehaviour, IMinigame
     private bool gameIsEnding = false;
     private Coroutine shutdownCoroutine;
 
+    private ArcadeMachineController parentMachine;
+
     private void Update()
     {
         if (!gameObject.activeInHierarchy || gameIsEnding) return;
@@ -22,10 +24,11 @@ public class GameplayAreaRed : MonoBehaviour, IMinigame
         CheckHealth();
     }
 
-    public void StartGame()
+    public void StartGame(ArcadeMachineController parentMachine)
     {
         ResetGame();
         gameObject.SetActive(true);
+        this.parentMachine = parentMachine;
     }
 
     public void ResetGame()

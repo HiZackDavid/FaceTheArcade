@@ -25,15 +25,18 @@ public class LoAMinigame : MonoBehaviour, IMinigame
     
     private float _shutDownGameDelay = 5.0f;
 
+    private ArcadeMachineController parentMachine;
+
     private void Update()
     {
         CheckHealth();
     }
 
-    public void StartGame()
+    public void StartGame(ArcadeMachineController parentMachine)
     {
         ResetGame();
         SetGameplayEnabledState(true);
+        this.parentMachine = parentMachine;
     }
 
     public void ResetGame()

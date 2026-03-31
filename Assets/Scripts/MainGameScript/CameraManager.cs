@@ -21,6 +21,10 @@ public class CameraManager : MonoBehaviour
     private bool ortho = false;
     private CinemachineCamera tCam;
 
+    private bool inTransition = false;
+
+    public bool isInTransition() => inTransition;
+
     private void Awake()
     {
         if (instance != null)
@@ -48,6 +52,8 @@ public class CameraManager : MonoBehaviour
 
     public void SwitchToCamera(CinemachineCamera targetCamera, bool reactivateController = true, bool ortho = true)
     {
+        inTransition = true;
+
         tCam = targetCamera;
         this.reactivateController = reactivateController;
         this.ortho = ortho;
@@ -93,5 +99,7 @@ public class CameraManager : MonoBehaviour
             setOrtho();
         else
             setPerspective();
+
+        inTransition = false;
     }
 }

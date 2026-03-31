@@ -2,7 +2,7 @@ using System.Collections;
 
 public interface IMinigame
 {
-    void StartGame();
+    void StartGame(ArcadeMachineController parentMachine);
     void ResetGame();
     void EndGame();
     IEnumerator ShutDownMinigameAfterDelay();

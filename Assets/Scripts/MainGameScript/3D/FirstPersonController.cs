@@ -167,6 +167,7 @@ public class FirstPersonController : MonoBehaviour
     {
         if (_input.interact && _interactionArea.canInteract()) 
         {
+
             _input.interact = false;
 
             GameObject obj = _interactionArea.getCurObject();
@@ -178,11 +179,14 @@ public class FirstPersonController : MonoBehaviour
                 arcade.Interact();
                 return;
             }
-            
-            CinemachineCamera cam = obj.GetComponentInChildren<CinemachineCamera>();
-            if (cam != null)
+            else
             {
-                CameraManager.instance.SwitchToCamera(cam, false);
+                CinemachineCamera cam = obj.GetComponentInChildren<CinemachineCamera>();
+                if (cam != null)
+                {
+                    CameraManager.instance.SwitchToCamera(cam, false);
+                    GameManager.instance.PauseGame();
+                }
             }
         }
     }

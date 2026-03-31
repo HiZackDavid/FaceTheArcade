@@ -21,8 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: screen 1
-  m_Shader: {fileID: -6465566751694194690, guid: 1d4ea0eb5ac58d346877aebe298e6916, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: 1d4ea0eb5ac58d346877aebe298e6916, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5ac8305424dda9e429592beb494a9052, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: 5ac8305424dda9e429592beb494a9052, type: 3}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
