@@ -64,7 +64,7 @@ public class ArcadeMachineController : MonoBehaviour
 
         // Show mad client points
 
-        // Play a good SFX
+        // Play a bad SFX
     }
 
     public void resetTimer()
@@ -74,7 +74,7 @@ public class ArcadeMachineController : MonoBehaviour
 
         // Show Icon points
 
-        // Play a bad SFX
+        // Play a good SFX
     }
 
     public void stopTimer()
