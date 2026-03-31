@@ -67,10 +67,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
-   public void OnTimerUpdate(float seconds)
+    public void OnTimerUpdate(float seconds)
     {
         currentHUD.UpdateTimer(seconds);
     } 
+
+    public void OnScoreUpdate(int currentScore)
+    {
+        // If we want to have different scores per machine
+        // We must call different methods here
+
+        currentHUD.UpdateScore(currentScore);
+    }
 
     public void OnRequestQuit() 
     {

@@ -19,6 +19,8 @@ public class SurvivalMiniGameManagerScript : MonoBehaviour, IMinigame
     
     private float _shutDownGameDelay = 5.0f;
 
+    private ArcadeMachineController parentMachine;
+
     private void Awake()
     {
         _playerHealth = playerPrefab.GetComponent<CharacterHealthScript>();
@@ -49,9 +51,10 @@ public class SurvivalMiniGameManagerScript : MonoBehaviour, IMinigame
         CheckHealth();
     }
 
-    public void StartGame()
+    public void StartGame(ArcadeMachineController parentMachine)
     {
         gameObject.SetActive(true);
+        this.parentMachine = parentMachine;
     }
 
     public void ResetGame(){ }
@@ -65,6 +68,7 @@ public class SurvivalMiniGameManagerScript : MonoBehaviour, IMinigame
         gameObject.SetActive(false);
         
         CameraManager.instance.SwitchToPrimaryCamera();
+        parentMachine.resetTimer();
     }
 
     private void CheckHealth()

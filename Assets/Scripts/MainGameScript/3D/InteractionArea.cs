@@ -17,14 +17,29 @@ public class InteractionArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SetOutline(other.gameObject);
-        isInteractuable = true;
+        ArcadeMachineController controller = other.GetComponent<ArcadeMachineController>();
+        if (controller)
+        {
+            if (controller.isAvailable())
+            {
+                SetOutline(other.gameObject);
+                isInteractuable = true;
+            }
+        }
+        else
+        {
+            SetOutline(other.gameObject);
+            isInteractuable = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        RemoveOutline(other.gameObject);
-        isInteractuable = false;
+        if (curObject != null)
+        {
+            RemoveOutline(other.gameObject);
+            isInteractuable = false;
+        }
     }
 
     private void SetOutline(GameObject target) 
@@ -59,6 +74,7 @@ public class InteractionArea : MonoBehaviour
             }
 
             curObject = target;
+            Debug.Log(curObject.name);
             UIManager.instace.showHideableHUD();
         }
     }
@@ -87,6 +103,8 @@ public class InteractionArea : MonoBehaviour
                     outline.enabled = false;
             }
 
+            Debug.Log("EXIT: " + curObject.name);
+            curObject = null;
             UIManager.instace.hideHideableHUD();
         }
 
