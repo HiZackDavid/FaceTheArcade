@@ -18,6 +18,8 @@ public class ArcadeMachineController : MonoBehaviour
 
     private IMinigame minigame;
 
+    public MoodIconsManager MoodIconsManager;
+
 
     public bool isAvailable() => canInteract;
 
@@ -61,8 +63,7 @@ public class ArcadeMachineController : MonoBehaviour
     public void onMachineTimerFinished()
     {
         canInteract = true;
-
-        // Show mad client points
+        MoodIconsManager.IsAngry();
 
         // Play a bad SFX
     }
@@ -71,8 +72,7 @@ public class ArcadeMachineController : MonoBehaviour
     {
         machineTimer.StartTimer(Random.Range(minTimeForBreaking, maxTimeForBreaking));
         canInteract = false;
-
-        // Show Icon points
+        MoodIconsManager.IsHappy();
 
         // Play a good SFX
     }
