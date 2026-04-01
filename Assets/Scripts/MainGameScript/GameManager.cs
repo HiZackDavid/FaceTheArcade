@@ -96,9 +96,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetPlayerPosition()
     {
-        Debug.Log("Player position reset");
         player.transform.position = spawnPoint.transform.position;
         player.transform.rotation = spawnPoint.transform.rotation;
+        score = 0;
     }
 
     public void CloseGame()
