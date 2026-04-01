@@ -94,6 +94,14 @@ public class EnemyMazeAI : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
+        if (isPaused)
+        {
+            if (rb != null)
+                rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+
         // Sécurité : on ne fait rien si les références ne sont pas prêtes
         if (grid == null || vision == null || !grid.IsReady || vision.player == null)
             return;
@@ -327,6 +335,16 @@ public class EnemyMazeAI : MonoBehaviour
 
         // Aucun point trouvé (cas très rare, grille très petite ou ennemi complètement bloqué)
         hasWanderGoal = false;
+    }
+
+    private bool isPaused = false;
+
+    public void SetPaused(bool paused)
+    {
+        isPaused = paused;
+
+        if (paused && rb != null)
+            rb.linearVelocity = Vector2.zero;
     }
 
     /// <summary>

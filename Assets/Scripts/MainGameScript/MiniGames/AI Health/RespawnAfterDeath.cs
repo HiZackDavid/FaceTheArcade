@@ -37,7 +37,27 @@ public class RespawnAfterDeath : MonoBehaviour
 
     void OnEnable()
     {
+        if (hp == null) hp = GetComponent<CharacterHealthScript>();
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+
+        if (scriptsToToggle == null || collidersToToggle == null || renderersToToggle == null || linesToToggle == null)
+            CacheAll();
+
+        hp.OnHealthChanged -= OnHealthChanged;
         hp.OnHealthChanged += OnHealthChanged;
+
+        StopAllCoroutines();
+
+        dead = false;
+        respawning = false;
+
+        SetAlive(true);
+
+        // remet la vie dans un état valide au redémarrage
+        hp.TakeDamage(-9999f);
+
+        float toDamage = Mathf.Clamp(100f - respawnHealthPercent, 0f, 100f);
+        if (toDamage > 0f) hp.TakeDamage(toDamage);
     }
 
     void OnDisable()
