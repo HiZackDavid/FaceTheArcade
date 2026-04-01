@@ -5,11 +5,6 @@ public class ControllerManager : MonoBehaviour
 
     public static ControllerManager instance;
 
-
-    // private Controller currentController; <- On peu créer un controller géneral 
-
-    // On peu ajouter d'autres controllers ici
-
     GameObject player;
 
     private void Awake()
@@ -28,15 +23,17 @@ public class ControllerManager : MonoBehaviour
 
     public void ActivateController()
     {
-        // currentController.setActive(true);
 
+        FirstPersonController controller = player.GetComponent<FirstPersonController>();
+        controller.enabled = true;
         player.SetActive(true);
         SetCursorState(true);
     }
 
     public void DeactivateController()
     {
-        // currentController.setActive(false);
+        FirstPersonController controller = player.GetComponent<FirstPersonController>();
+        controller.enabled = false;
 
         player.SetActive(false);
         SetCursorState(false);
