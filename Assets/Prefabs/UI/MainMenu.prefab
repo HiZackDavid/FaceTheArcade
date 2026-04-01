@@ -385,7 +385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Happy clients gives points
+  m_text: Happy clients give points
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 433c6434bd9fe7c49a08c9816a8c8e28, type: 2}
   m_sharedMaterial: {fileID: -847392816999543693, guid: 433c6434bd9fe7c49a08c9816a8c8e28, type: 2}
@@ -522,7 +522,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 274355026, guid: 00376378d3d41054988803b8b4ad9b77, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2119,7 +2119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2623080184431271962
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2379,7 +2379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -90066723, guid: 00376378d3d41054988803b8b4ad9b77, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2454,7 +2454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mad clients stop giving points.
+  m_text: Angry clients stop giving points.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 433c6434bd9fe7c49a08c9816a8c8e28, type: 2}
   m_sharedMaterial: {fileID: -847392816999543693, guid: 433c6434bd9fe7c49a08c9816a8c8e28, type: 2}
