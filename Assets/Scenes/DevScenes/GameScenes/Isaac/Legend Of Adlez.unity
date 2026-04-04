@@ -260,6 +260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Legend of Adlez
       objectReference: {fileID: 0}
+    - target: {fileID: 5262960660705131638, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5731864306646022492, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -278,7 +282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7512327622854799015, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
