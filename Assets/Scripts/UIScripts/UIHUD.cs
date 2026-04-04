@@ -6,7 +6,7 @@ public class UIHUD : UIElement
 {
     [SerializeField] private TextMeshProUGUI timeCounterText;
 
-    [SerializeField] private Image[] cheatCodeImages;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     [SerializeField] private GameObject hideableElement;
     
@@ -18,17 +18,14 @@ public class UIHUD : UIElement
         timeCounterText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    public void UpdateScore(int currentScore)
+    {
+        scoreText.text = currentScore.ToString();
+    }
+
     protected override void OnShow()
     {
-        int times = GameManager.instance.GetCheatCodes();
-        foreach (Image img in cheatCodeImages)
-        {
-            if (times > 0)
-            {
-                img.enabled = true;
-                times--;
-            }
-        }
+        scoreText.text = GameManager.instance.GetScore().ToString();
     }
 
     public void showHideable()

@@ -11,7 +11,7 @@ public class PlayerSurvivalCollisionDetectionScript : CharacterHealthScript
         {
             other.transform.GetComponent<EnemySurvivalCollisionDetectionScript>().PlayerTouched();
             Destroy(other.gameObject);
-            TakeDamage(Random.Range(2, 6));
+            TakeDamage(6);
         }
     }
 }

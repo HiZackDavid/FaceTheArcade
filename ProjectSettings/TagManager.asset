@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Selectable
+  - PlayerHitbox
   layers:
   - Default
   - TransparentFX
