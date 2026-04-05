@@ -369,7 +369,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8754356415258224187}
-  hurtClip: {fileID: 8300000, guid: 218d01bcb07484d469c26be06b37f3b9, type: 3}
+  hurtClips:
+  - {fileID: 8300000, guid: 218d01bcb07484d469c26be06b37f3b9, type: 3}
+  - {fileID: 8300000, guid: 1fd5729a8a308a94da208506612fb1eb, type: 3}
+  - {fileID: 8300000, guid: c49197cf222b25c41bfed8b294f122bf, type: 3}
+  - {fileID: 8300000, guid: 170cf5af710b6cf43bbb043995f9ce9a, type: 3}
 --- !u!82 &8754356415258224187
 AudioSource:
   m_ObjectHideFlags: 0
