@@ -7600,14 +7600,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4411296496835562861, guid: d16b580993f5c6f448a9674ce05d77cb, type: 3}
-      propertyPath: m_Size.x
-      value: 2.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 4411296496835562861, guid: d16b580993f5c6f448a9674ce05d77cb, type: 3}
-      propertyPath: m_Size.y
-      value: 0.96
-      objectReference: {fileID: 0}
     - target: {fileID: 4956745331331638353, guid: d16b580993f5c6f448a9674ce05d77cb, type: 3}
       propertyPath: player
       value: 
