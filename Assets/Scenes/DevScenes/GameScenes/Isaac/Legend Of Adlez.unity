@@ -253,6 +253,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!212 &426213594 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7515573294581680555, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+  m_PrefabInstance: {fileID: 1297864211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &504285722 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2166676303645842565, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+  m_PrefabInstance: {fileID: 1297864211}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &509759660
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +298,11 @@ Transform:
 --- !u!1 &597490927 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5339395073066921988, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+  m_PrefabInstance: {fileID: 1297864211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &597490931 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6932885453151375584, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
   m_PrefabInstance: {fileID: 1297864211}
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &597490934
@@ -387,6 +402,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!212 &773714609 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5315520313550832491, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+  m_PrefabInstance: {fileID: 1297864211}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1236148135
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +536,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2166676303645842565, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2428269125680469917, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -536,6 +560,18 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 597490934}
+    - target: {fileID: 4863199964500480439, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: SpriteRenderers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863199964500480439, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: 'SpriteRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 426213594}
+    - target: {fileID: 4863199964500480439, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: 'SpriteRenderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 597490931}
     - target: {fileID: 5262960660705131638, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: speed
       value: 8
@@ -556,10 +592,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6127080650713817351, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
-      propertyPath: container
-      value: 
+    - target: {fileID: 6201953761128060314, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: SpriteRenderers.Array.size
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6201953761128060314, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: 'SpriteRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 504285722}
+    - target: {fileID: 6201953761128060314, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: 'SpriteRenderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 773714609}
     - target: {fileID: 6932885453151375584, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -578,19 +622,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 12.188097
+      value: 10.722789
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
-      value: 11.139828
+      value: 10.506872
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
-      value: 13.185695
+      value: 13.111975
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
-      value: 10.906671
+      value: 11.009281
       objectReference: {fileID: 0}
     - target: {fileID: 7867334295947537370, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_LocalPosition.x
