@@ -3,31 +3,47 @@ using UnityEngine;
 
 public class CharacterHealthScript : MonoBehaviour
 {
-    private readonly float maxHealth = 100;
-    private float currentHealth;
+    private readonly float _maxHealth = 100;
+    private float _currentHealth;
+    
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] hurtClips;
 
     public event Action<float> OnHealthChanged;
 
-    private void Awake()
+    void Awake()
     {
-        currentHealth = maxHealth;
+        _currentHealth = _maxHealth;
+    }
+
+    void PlayRandomHurtClip()
+    {
+        if (!audioSource || hurtClips == null || hurtClips.Length == 0) return;
+        
+        int randomIndex = UnityEngine.Random.Range(0, hurtClips.Length);
+        AudioClip clip = hurtClips[randomIndex];
+        
+        audioSource.PlayOneShot(clip);
     }
 
     public void TakeDamage(float damageAmount)
     {
-        currentHealth -= damageAmount;
-        currentHealth = Math.Clamp(currentHealth, 0, maxHealth);
-        OnHealthChanged?.Invoke(currentHealth / maxHealth * 100);
+        _currentHealth -= damageAmount;
+        _currentHealth = Math.Clamp(_currentHealth, 0, _maxHealth);
+        OnHealthChanged?.Invoke(_currentHealth / _maxHealth * 100);
+        
+        PlayRandomHurtClip();
     }
 
     public bool IsDead()
     {
-        return currentHealth <= 0;
+        return _currentHealth <= 0;
     }
     
     void OnDisable()
     {
-        currentHealth = maxHealth;
+        _currentHealth = _maxHealth;
         OnHealthChanged = null;
     }
 }

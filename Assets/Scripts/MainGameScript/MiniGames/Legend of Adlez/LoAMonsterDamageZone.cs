@@ -14,26 +14,16 @@ public class LoAMonsterDamageZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Monster zone touched: " + other.name + " | layer = " + LayerMask.LayerToName(other.gameObject.layer));
         
         if (other.gameObject.layer != _playerLayer) return;
         
-        Debug.Log("The monster touched a player");
-
         CharacterHealthScript health = other.GetComponent<CharacterHealthScript>();
         
-        if (health == null)
+        if (!health)
         {
             health = other.GetComponentInParent<CharacterHealthScript>();
         }
-
-        if (health == null)
-        {
-            Debug.LogWarning("No CharacterHealthScript found on player.");
-            return;
-        }
         
-        Debug.Log("Monster dealt damage.");
         health.TakeDamage(contactDamage);
     }
 }
