@@ -374,6 +374,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1fd5729a8a308a94da208506612fb1eb, type: 3}
   - {fileID: 8300000, guid: c49197cf222b25c41bfed8b294f122bf, type: 3}
   - {fileID: 8300000, guid: 170cf5af710b6cf43bbb043995f9ce9a, type: 3}
+  SpriteRenderers:
+  - {fileID: 3646041204632934003}
+  flickerDuration: 0.2
+  flickerInterval: 0.05
+  lowAlpha: 0.25
 --- !u!82 &8754356415258224187
 AudioSource:
   m_ObjectHideFlags: 0
