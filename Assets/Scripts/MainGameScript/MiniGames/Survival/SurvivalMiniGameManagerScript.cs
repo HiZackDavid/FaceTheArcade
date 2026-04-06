@@ -68,7 +68,6 @@ public class SurvivalMiniGameManagerScript : MonoBehaviour, IMinigame
         gameObject.SetActive(false);
         
         CameraManager.instance.SwitchToPrimaryCamera();
-        parentMachine.resetTimer();
     }
 
     private void CheckHealth()
@@ -79,6 +78,10 @@ public class SurvivalMiniGameManagerScript : MonoBehaviour, IMinigame
         if (playerIsDead || anomalyIsDead)
         {
             winLoseTextContainer.SetActive(true);
+
+            if (!playerIsDead)
+                parentMachine.resetTimer();
+
             winnerText.SetActive(!playerIsDead);
             loserText.SetActive(playerIsDead);
             

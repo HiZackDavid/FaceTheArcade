@@ -105,6 +105,10 @@ public class LoAMinigame : MonoBehaviour, IMinigame
             _gameEnding = true;
             
             winLoseTextContainer.SetActive(true);
+
+            if (!playerIsDead)
+                parentMachine.resetTimer();
+
             winnerText.SetActive(!playerIsDead);
             loserText.SetActive(playerIsDead);
             

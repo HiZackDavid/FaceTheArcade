@@ -76,6 +76,10 @@ public class GameplayAreaRed : MonoBehaviour, IMinigame
         if (playerIsDead || anomalyIsDead)
         {
             winLoseTextContainer.SetActive(true);
+
+            if (!playerIsDead)
+                parentMachine.resetTimer();
+
             winnerText.SetActive(!playerIsDead);
             loserText.SetActive(playerIsDead);
             
