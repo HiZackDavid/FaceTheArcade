@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2027048965
   m_SortingLayer: 1
-  m_SortingOrder: 5
+  m_SortingOrder: 7
   m_Sprite: {fileID: -1706695883, guid: 8f0c2f38b7e504647869c76c4102c68b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -162,7 +162,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2027048965
   m_SortingLayer: 1
-  m_SortingOrder: 6
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 8971b05f90ca67247a7f682fa360b9d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7134668838601503658}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d2921fc311f18d4496c4e53590de657, type: 3}
   m_Name: 
@@ -352,7 +352,7 @@ MonoBehaviour:
   telegraphDuration: 0.9
   chargeDuration: 0.55
   recoverDuration: 0.75
-  chargeSpeed: 11
+  chargeSpeed: 14
   idleColor: {r: 0.6, g: 0.6, b: 0.6, a: 0.8}
   telegraphColor: {r: 1, g: 0.85, b: 0.2, a: 1}
   chargeColor: {r: 1, g: 0.2, b: 0.2, a: 1}

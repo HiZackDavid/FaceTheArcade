@@ -134,7 +134,7 @@ public class LoAAnomalyController : MonoBehaviour
         }
     }
     
-    private void SetTelegraphColor(Color color)
+    void SetTelegraphColor(Color color)
     {
         if (telegraphArrowRenderer)
         {
@@ -147,5 +147,20 @@ public class LoAAnomalyController : MonoBehaviour
         if (!telegraphArrow) return;
 
         telegraphArrow.up = _chargeDirection;
+    }
+
+    public void ResetControllerState()
+    {
+        _chargeDirection = Vector2.zero;
+        _stateTimer = 0f;
+
+        if (rb)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+        
+        ChangeState(HeartMonsterState.Idle);
+        UpdateTelegraphVisual();
     }
 }

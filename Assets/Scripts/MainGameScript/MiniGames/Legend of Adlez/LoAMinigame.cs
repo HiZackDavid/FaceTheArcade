@@ -14,6 +14,14 @@ public class LoAMinigame : MonoBehaviour, IMinigame
     [Header("Gameplay References")]
     [SerializeField] private CharacterHealthScript playerHealth;
     [SerializeField] private CharacterHealthScript anomalyHealth;
+    
+    [Header("Controllers")]
+    [SerializeField] private LoAAnomalyController anomalyController;
+    [SerializeField] private PlayerMouvementRotationSprites playerMovement;
+    
+    [Header("Start Indicator")]
+    [SerializeField] private GameObject movementIndicator;
+    [SerializeField] private GameObject[] gameplayObjectsToEnableOnStart;
 
     [Header("Minigame Wrapper")]
     [SerializeField] GameObject container;
@@ -27,41 +35,29 @@ public class LoAMinigame : MonoBehaviour, IMinigame
 
     private ArcadeMachineController parentMachine;
     private bool _gameEnding;
+    private bool _gameStarted;
     private Coroutine _shutdownCoroutine;
 
-    private void Update()
+    void Update()
     {
+        if (!_gameStarted) return;
         CheckHealth();
     }
 
-    public void StartGame(ArcadeMachineController parentMachine)
+    void OnEnable()
     {
-        this.parentMachine = parentMachine;
-        ResetGame();
-    }
-
-    public void ResetGame()
-    {
-        if (_shutdownCoroutine != null)
+        if (playerMovement)
         {
-            StopCoroutine(_shutdownCoroutine);
-            _shutdownCoroutine = null;
+            playerMovement.OnPlayerMoved += HandleFirstMovement;
         }
-        
-        _gameEnding = false;
-        
-        ResetPositions();
-        SetEntitesActive(true);
-        ResetHealth(playerHealth);
-        ResetHealth(anomalyHealth);
-        ResetEndOfGameTexts();
-        SetGameplayEnabledState(true);
     }
-
-    public void EndGame()
+    
+    void OnDisable()
     {
-        SetGameplayEnabledState(false);
-        CameraManager.instance.SwitchToPrimaryCamera();
+        if (playerMovement)
+        {
+            playerMovement.OnPlayerMoved -= HandleFirstMovement;
+        }
     }
 
     void SetGameplayEnabledState(bool isEnabled)
@@ -117,6 +113,83 @@ public class LoAMinigame : MonoBehaviour, IMinigame
             
             _shutdownCoroutine = StartCoroutine(ShutDownMinigameAfterDelay());
         }
+    }
+
+    void SetGameplayObjectsActive(bool isActive)
+    {
+        if (gameplayObjectsToEnableOnStart == null) return;
+
+        foreach (GameObject obj in gameplayObjectsToEnableOnStart)
+        {
+            if (obj) obj.SetActive(isActive);
+        }
+    }
+
+    void PrepareWaitingPhase()
+    {
+        if (movementIndicator) movementIndicator.SetActive(true);
+        if (anomalyController)
+        {
+            anomalyController.ResetControllerState();
+            anomalyController.enabled = false;
+        }
+        
+        SetGameplayObjectsActive(false);
+    }
+    
+    void StartGameplay() 
+    {
+        if (_gameStarted) return;
+        
+        _gameStarted = true;
+
+        if (movementIndicator) movementIndicator.SetActive(false);
+        if (anomalyController) anomalyController.enabled = true;
+
+        SetGameplayObjectsActive(true);
+    }
+
+    void HandleFirstMovement()
+    {
+        if (_gameStarted) return;
+        if (playerMovement) playerMovement.OnPlayerMoved -= HandleFirstMovement;
+        
+        StartGameplay();
+    }
+    
+    public void StartGame(ArcadeMachineController parentMachine)
+    {
+        this.parentMachine = parentMachine;
+        ResetGame();
+    }
+
+    public void ResetGame()
+    {
+        if (_shutdownCoroutine != null)
+        {
+            StopCoroutine(_shutdownCoroutine);
+            _shutdownCoroutine = null;
+        }
+        
+        _gameEnding = false;
+        _gameStarted = false;
+        
+        ResetPositions();
+        SetEntitesActive(true);
+        ResetHealth(playerHealth);
+        ResetHealth(anomalyHealth);
+        ResetEndOfGameTexts();
+        SetGameplayEnabledState(true);
+        
+        if (anomalyController) anomalyController.ResetControllerState();
+
+        PrepareWaitingPhase();
+    }
+
+    public void EndGame()
+    {
+        SetGameplayEnabledState(false);
+        CameraManager.instance.SwitchToPrimaryCamera();
     }
     
     public IEnumerator ShutDownMinigameAfterDelay()
