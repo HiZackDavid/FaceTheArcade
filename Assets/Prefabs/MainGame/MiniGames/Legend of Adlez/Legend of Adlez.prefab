@@ -4036,8 +4036,7 @@ MonoBehaviour:
   anomalyController: {fileID: 7512327622854799015}
   playerMovement: {fileID: 5262960660705131638}
   movementIndicator: {fileID: 7579358558605202097}
-  gameplayObjectsToEnableOnStart:
-  - {fileID: 5731864306646022492}
+  gameplayObjectsToEnableOnStart: []
   container: {fileID: 0}
   winLoseTextContainer: {fileID: 456954622637302603}
   winnerText: {fileID: 9022785044106672677}
@@ -8615,17 +8614,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d16b580993f5c6f448a9674ce05d77cb, type: 3}
---- !u!1 &5731864306646022492 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7134668838601503658, guid: d16b580993f5c6f448a9674ce05d77cb, type: 3}
-  m_PrefabInstance: {fileID: 3209029921632701174}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6201953761128060314 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8834100528744750956, guid: d16b580993f5c6f448a9674ce05d77cb, type: 3}
   m_PrefabInstance: {fileID: 3209029921632701174}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5731864306646022492}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2e7706eca1d30d4eb33ad52c23e5d69, type: 3}
@@ -8636,7 +8630,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4956745331331638353, guid: d16b580993f5c6f448a9674ce05d77cb, type: 3}
   m_PrefabInstance: {fileID: 3209029921632701174}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5731864306646022492}
+  m_GameObject: {fileID: 0}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d2921fc311f18d4496c4e53590de657, type: 3}
