@@ -18,13 +18,14 @@ public class CharacterHealthScript : MonoBehaviour
     [SerializeField] [Range(0f, 1f)] private float lowAlpha = 0.25f;
     
     bool _isFlickering = false;
+    private Coroutine _flickerCoroutine;
     private int _lastPlayedIndex = -1;
 
     public event Action<float> OnHealthChanged;
 
     void Awake()
     {
-        _currentHealth = _maxHealth;
+        ResetHealthState();
     }
 
     void PlayRandomHurtClip()
@@ -70,6 +71,12 @@ public class CharacterHealthScript : MonoBehaviour
             sr.color = c;
         }
     }
+    
+    void OnDisable()
+    {
+        _currentHealth = _maxHealth;
+        OnHealthChanged = null;
+    }
 
     public void TakeDamage(float damageAmount)
     {
@@ -81,7 +88,7 @@ public class CharacterHealthScript : MonoBehaviour
 
         if (!_isFlickering)
         {
-            StartCoroutine(FlickerEntity());
+            _flickerCoroutine = StartCoroutine(FlickerEntity());
         }
     }
 
@@ -89,10 +96,19 @@ public class CharacterHealthScript : MonoBehaviour
     {
         return _currentHealth <= 0;
     }
-    
-    void OnDisable()
+
+    public void ResetHealthState()
     {
         _currentHealth = _maxHealth;
-        OnHealthChanged = null;
+        _isFlickering = false;
+
+        if (_flickerCoroutine != null)
+        {
+            StopCoroutine(_flickerCoroutine);
+            _flickerCoroutine = null;
+        }
+
+        SetAlpha(1f);
+        OnHealthChanged?.Invoke(100f);
     }
 }

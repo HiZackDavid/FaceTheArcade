@@ -26,6 +26,8 @@ public class LoAMinigame : MonoBehaviour, IMinigame
     private float _shutDownGameDelay = 5.0f;
 
     private ArcadeMachineController parentMachine;
+    private bool _gameEnding;
+    private Coroutine _shutdownCoroutine;
 
     private void Update()
     {
@@ -34,14 +36,25 @@ public class LoAMinigame : MonoBehaviour, IMinigame
 
     public void StartGame(ArcadeMachineController parentMachine)
     {
-        ResetGame();
-        SetGameplayEnabledState(true);
         this.parentMachine = parentMachine;
+        ResetGame();
     }
 
     public void ResetGame()
     {
-        ResetGameState();
+        if (_shutdownCoroutine != null)
+        {
+            StopCoroutine(_shutdownCoroutine);
+            _shutdownCoroutine = null;
+        }
+        
+        _gameEnding = false;
+        
+        ResetPositions();
+        SetEntitesActive(true);
+        ResetHealth(playerHealth);
+        ResetHealth(anomalyHealth);
+        ResetEndOfGameTexts();
         SetGameplayEnabledState(true);
     }
 
@@ -56,26 +69,45 @@ public class LoAMinigame : MonoBehaviour, IMinigame
         if (container != null) container.SetActive(isEnabled);
     }
 
-    void ResetGameState()
+    void ResetPositions()
     {
-        if (player != null && playerSpawnPoint != null) player.position = playerSpawnPoint.position;
-        if (anomaly != null && anomalySpawnPoint != null) anomaly.position = anomalySpawnPoint.position;
-        
-        playerHealth.gameObject.SetActive(true);
-        anomalyHealth.gameObject.SetActive(true);
-        
+        if (player && playerSpawnPoint) player.position = playerSpawnPoint.position;
+        if (anomaly && anomalySpawnPoint) anomaly.position = anomalySpawnPoint.position;
+    }
+
+    void ResetEndOfGameTexts()
+    {
         winLoseTextContainer.SetActive(false);
         winnerText.SetActive(false);
         loserText.SetActive(false);
     }
 
+    void ResetHealth(CharacterHealthScript characterHealth)
+    {
+        if (characterHealth)
+        {
+            characterHealth.gameObject.SetActive(true);
+            characterHealth.ResetHealthState();
+        }
+    }
+
+    void SetEntitesActive(bool isActive)
+    {
+        playerHealth.gameObject.SetActive(isActive);
+        anomalyHealth.gameObject.SetActive(isActive);
+    }
+
     void CheckHealth()
     {
+        if (_gameEnding) return;
+        
         bool playerIsDead = playerHealth.IsDead();
         bool anomalyIsDead = anomalyHealth.IsDead();
         
         if (playerIsDead || anomalyIsDead)
         {
+            _gameEnding = true;
+            
             winLoseTextContainer.SetActive(true);
             winnerText.SetActive(!playerIsDead);
             loserText.SetActive(playerIsDead);
@@ -83,7 +115,7 @@ public class LoAMinigame : MonoBehaviour, IMinigame
             playerHealth.gameObject.SetActive(anomalyIsDead);
             anomalyHealth.gameObject.SetActive(false);
             
-            StartCoroutine(ShutDownMinigameAfterDelay());
+            _shutdownCoroutine = StartCoroutine(ShutDownMinigameAfterDelay());
         }
     }
     
@@ -91,5 +123,6 @@ public class LoAMinigame : MonoBehaviour, IMinigame
     {
         yield return new WaitForSeconds(_shutDownGameDelay);
         EndGame();
+        _shutdownCoroutine = null;
     }
 }

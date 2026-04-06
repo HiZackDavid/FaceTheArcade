@@ -253,6 +253,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 283911498915954919, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
+      value: 10.086235
+      objectReference: {fileID: 0}
+    - target: {fileID: 283911498915954919, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
+      value: 13.089985
+      objectReference: {fileID: 0}
+    - target: {fileID: 283911498915954919, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
+      value: 11.921167
+      objectReference: {fileID: 0}
+    - target: {fileID: 283911498915954919, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
+      value: 10.270873
+      objectReference: {fileID: 0}
     - target: {fileID: 2166676303645842565, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -293,6 +309,26 @@ PrefabInstance:
       propertyPath: 'SpriteRenderers.Array.data[1]'
       value: 
       objectReference: {fileID: 773714609}
+    - target: {fileID: 6954016287071905857, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[3].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954016287071905857, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[4].m_Data
+      value: 
+      objectReference: {fileID: 1029825438, guid: b631ed305dfd43c488e0f8edf5c829bc, type: 3}
+    - target: {fileID: 6954016287071905857, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[3].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954016287071905857, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[4].m_RefCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954016287071905857, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
+      propertyPath: m_Tiles.Array.data[42].second.m_TileSpriteIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7450319600262331047, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -303,7 +339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7512327622854799015, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_Tiles.Array.size
@@ -439,15 +475,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 10.266979
+      value: 12.62467
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
-      value: 10.435515
+      value: 12.8997135
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
-      value: 10.675833
+      value: 11.745838
       objectReference: {fileID: 0}
     - target: {fileID: 7859138777098175873, guid: 24f78acbeb1b839418b2cbbdd49a57b0, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
