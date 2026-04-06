@@ -14,6 +14,14 @@ public class LoAMinigame : MonoBehaviour, IMinigame
     [Header("Gameplay References")]
     [SerializeField] private CharacterHealthScript playerHealth;
     [SerializeField] private CharacterHealthScript anomalyHealth;
+    
+    [Header("Controllers")]
+    [SerializeField] private LoAAnomalyController anomalyController;
+    [SerializeField] private PlayerMouvementRotationSprites playerMovement;
+    
+    [Header("Start Indicator")]
+    [SerializeField] private GameObject movementIndicator;
+    [SerializeField] private GameObject[] gameplayObjectsToEnableOnStart;
 
     [Header("Minigame Wrapper")]
     [SerializeField] GameObject container;
@@ -26,29 +34,30 @@ public class LoAMinigame : MonoBehaviour, IMinigame
     private float _shutDownGameDelay = 5.0f;
 
     private ArcadeMachineController parentMachine;
+    private bool _gameEnding;
+    private bool _gameStarted;
+    private Coroutine _shutdownCoroutine;
 
-    private void Update()
+    void Update()
     {
+        if (!_gameStarted) return;
         CheckHealth();
     }
 
-    public void StartGame(ArcadeMachineController parentMachine)
+    void OnEnable()
     {
-        ResetGame();
-        SetGameplayEnabledState(true);
-        this.parentMachine = parentMachine;
+        if (playerMovement)
+        {
+            playerMovement.OnPlayerMoved += HandleFirstMovement;
+        }
     }
-
-    public void ResetGame()
+    
+    void OnDisable()
     {
-        ResetGameState();
-        SetGameplayEnabledState(true);
-    }
-
-    public void EndGame()
-    {
-        SetGameplayEnabledState(false);
-        CameraManager.instance.SwitchToPrimaryCamera();
+        if (playerMovement)
+        {
+            playerMovement.OnPlayerMoved -= HandleFirstMovement;
+        }
     }
 
     void SetGameplayEnabledState(bool isEnabled)
@@ -56,26 +65,45 @@ public class LoAMinigame : MonoBehaviour, IMinigame
         if (container != null) container.SetActive(isEnabled);
     }
 
-    void ResetGameState()
+    void ResetPositions()
     {
-        if (player != null && playerSpawnPoint != null) player.position = playerSpawnPoint.position;
-        if (anomaly != null && anomalySpawnPoint != null) anomaly.position = anomalySpawnPoint.position;
-        
-        playerHealth.gameObject.SetActive(true);
-        anomalyHealth.gameObject.SetActive(true);
-        
+        if (player && playerSpawnPoint) player.position = playerSpawnPoint.position;
+        if (anomaly && anomalySpawnPoint) anomaly.position = anomalySpawnPoint.position;
+    }
+
+    void ResetEndOfGameTexts()
+    {
         winLoseTextContainer.SetActive(false);
         winnerText.SetActive(false);
         loserText.SetActive(false);
     }
 
+    void ResetHealth(CharacterHealthScript characterHealth)
+    {
+        if (characterHealth)
+        {
+            characterHealth.gameObject.SetActive(true);
+            characterHealth.ResetHealthState();
+        }
+    }
+
+    void SetEntitesActive(bool isActive)
+    {
+        playerHealth.gameObject.SetActive(isActive);
+        anomalyHealth.gameObject.SetActive(isActive);
+    }
+
     void CheckHealth()
     {
+        if (_gameEnding) return;
+        
         bool playerIsDead = playerHealth.IsDead();
         bool anomalyIsDead = anomalyHealth.IsDead();
         
         if (playerIsDead || anomalyIsDead)
         {
+            _gameEnding = true;
+            
             winLoseTextContainer.SetActive(true);
             winnerText.SetActive(!playerIsDead);
             loserText.SetActive(playerIsDead);
@@ -83,13 +111,91 @@ public class LoAMinigame : MonoBehaviour, IMinigame
             playerHealth.gameObject.SetActive(anomalyIsDead);
             anomalyHealth.gameObject.SetActive(false);
             
-            StartCoroutine(ShutDownMinigameAfterDelay());
+            _shutdownCoroutine = StartCoroutine(ShutDownMinigameAfterDelay());
         }
+    }
+
+    void SetGameplayObjectsActive(bool isActive)
+    {
+        if (gameplayObjectsToEnableOnStart == null) return;
+
+        foreach (GameObject obj in gameplayObjectsToEnableOnStart)
+        {
+            if (obj) obj.SetActive(isActive);
+        }
+    }
+
+    void PrepareWaitingPhase()
+    {
+        if (movementIndicator) movementIndicator.SetActive(true);
+        if (anomalyController)
+        {
+            anomalyController.ResetControllerState();
+            anomalyController.enabled = false;
+        }
+        
+        SetGameplayObjectsActive(false);
+    }
+    
+    void StartGameplay() 
+    {
+        if (_gameStarted) return;
+        
+        _gameStarted = true;
+
+        if (movementIndicator) movementIndicator.SetActive(false);
+        if (anomalyController) anomalyController.enabled = true;
+
+        SetGameplayObjectsActive(true);
+    }
+
+    void HandleFirstMovement()
+    {
+        if (_gameStarted) return;
+        if (playerMovement) playerMovement.OnPlayerMoved -= HandleFirstMovement;
+        
+        StartGameplay();
+    }
+    
+    public void StartGame(ArcadeMachineController parentMachine)
+    {
+        this.parentMachine = parentMachine;
+        ResetGame();
+    }
+
+    public void ResetGame()
+    {
+        if (_shutdownCoroutine != null)
+        {
+            StopCoroutine(_shutdownCoroutine);
+            _shutdownCoroutine = null;
+        }
+        
+        _gameEnding = false;
+        _gameStarted = false;
+        
+        ResetPositions();
+        SetEntitesActive(true);
+        ResetHealth(playerHealth);
+        ResetHealth(anomalyHealth);
+        ResetEndOfGameTexts();
+        SetGameplayEnabledState(true);
+        
+        if (anomalyController) anomalyController.ResetControllerState();
+
+        PrepareWaitingPhase();
+    }
+
+    public void EndGame()
+    {
+        SetGameplayEnabledState(false);
+        CameraManager.instance.SwitchToPrimaryCamera();
     }
     
     public IEnumerator ShutDownMinigameAfterDelay()
     {
         yield return new WaitForSeconds(_shutDownGameDelay);
         EndGame();
+        _shutdownCoroutine = null;
     }
 }

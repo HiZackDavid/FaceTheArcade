@@ -3,23 +3,27 @@ using UnityEngine;
 
 public class LoAMonsterDamageZone : MonoBehaviour
 {
-    [SerializeField] private float contactDamage = 15f;
+    [SerializeField] private float contactDamage = 20f;
 
-    private int playerLayer;
+    private int _playerLayer;
 
     private void Awake()
     {
-        playerLayer = LayerMask.NameToLayer("LoAPlayer");
+        _playerLayer = LayerMask.NameToLayer("LoAPlayerHurtbox");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer != playerLayer) return;
-
-        CharacterHealthScript playerHealth = other.GetComponent<CharacterHealthScript>();
-        if (playerHealth != null)
+        
+        if (other.gameObject.layer != _playerLayer) return;
+        
+        CharacterHealthScript health = other.GetComponent<CharacterHealthScript>();
+        
+        if (!health)
         {
-            playerHealth.TakeDamage(contactDamage);
+            health = other.GetComponentInParent<CharacterHealthScript>();
         }
+        
+        health.TakeDamage(contactDamage);
     }
 }

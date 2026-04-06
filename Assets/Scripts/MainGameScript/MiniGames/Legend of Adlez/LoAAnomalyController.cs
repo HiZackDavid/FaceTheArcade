@@ -6,14 +6,14 @@ public class LoAAnomalyController : MonoBehaviour
     {
         Idle,
         Telegraph,
-        Charge,
-        Recover
+        Charge
     }
     
-    [Header("References")]
+    [Header("World references")]
     public Transform player;
     public Rigidbody2D rb;
     public Transform telegraphArrow;
+    public SpriteRenderer telegraphArrowRenderer;
 
     [Header("Timings")]
     public float idleDuration = 0.75f;
@@ -23,23 +23,33 @@ public class LoAAnomalyController : MonoBehaviour
 
     [Header("Charge")]
     public float chargeSpeed = 5f;
+    
+    [Header("Telegraph Colors")]
+    public Color idleColor = new Color(0.6f, 0.6f, 0.6f, 0.8f);
+    public Color telegraphColor = new Color(1f, 0.85f, 0.2f, 1f);
+    public Color chargeColor = new Color(1f, 0.2f, 0.2f, 1f);
 
-    private HeartMonsterState currentState;
-    private float stateTimer;
-    private Vector2 chargeDirection;
+    private HeartMonsterState _currentState;
+    private float _stateTimer;
+    private Vector2 _chargeDirection;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (telegraphArrow != null)
+        {
+            telegraphArrow.gameObject.SetActive(true);
+        }
+        
         ChangeState(HeartMonsterState.Idle);
     }
 
     // Update is called once per frame
     void Update()
     {
-        stateTimer -= Time.deltaTime;
+        _stateTimer -= Time.deltaTime;
 
-        switch (currentState)
+        switch (_currentState)
         {
             case HeartMonsterState.Idle:
                 UpdateIdle();
@@ -52,18 +62,14 @@ public class LoAAnomalyController : MonoBehaviour
             case HeartMonsterState.Charge:
                 UpdateCharge();
                 break;
-
-            case HeartMonsterState.Recover:
-                UpdateRecover();
-                break;
         }
     }
     
     void FixedUpdate()
     {
-        if (currentState == HeartMonsterState.Charge)
+        if (_currentState == HeartMonsterState.Charge)
         {
-            rb.linearVelocity = chargeDirection * chargeSpeed;
+            rb.linearVelocity = _chargeDirection * chargeSpeed;
         }
         else
         {
@@ -73,7 +79,7 @@ public class LoAAnomalyController : MonoBehaviour
 
     void UpdateIdle()
     {
-        if (stateTimer <= 0f)
+        if (_stateTimer <= 0f)
         {
             ChangeState(HeartMonsterState.Telegraph);
         }
@@ -81,13 +87,13 @@ public class LoAAnomalyController : MonoBehaviour
     
     void UpdateTelegraph()
     {
-        if (player != null)
+        if (player)
         {
-            chargeDirection = ((Vector2)(player.position - transform.position)).normalized;
+            _chargeDirection = ((Vector2)(player.position - transform.position)).normalized;
             UpdateTelegraphVisual();
         }
-
-        if (stateTimer <= 0f)
+        
+        if (_stateTimer <= 0f)
         {
             ChangeState(HeartMonsterState.Charge);
         }
@@ -95,15 +101,7 @@ public class LoAAnomalyController : MonoBehaviour
     
     void UpdateCharge()
     {
-        if (stateTimer <= 0f)
-        {
-            ChangeState(HeartMonsterState.Recover);
-        }
-    }
-    
-    private void UpdateRecover()
-    {
-        if (stateTimer <= 0f)
+        if (_stateTimer <= 0f)
         {
             ChangeState(HeartMonsterState.Idle);
         }
@@ -111,49 +109,58 @@ public class LoAAnomalyController : MonoBehaviour
     
     void ChangeState(HeartMonsterState newState)
     {
-        currentState = newState;
+        _currentState = newState;
 
-        switch (currentState)
+        switch (_currentState)
         {
             case HeartMonsterState.Idle:
-                stateTimer = idleDuration;
-                HideTelegraph();
+                _stateTimer = idleDuration;
+                SetTelegraphColor(idleColor);
                 break;
 
             case HeartMonsterState.Telegraph:
-                stateTimer = telegraphDuration;
-                ShowTelegraph();
+                _stateTimer = telegraphDuration;
+                SetTelegraphColor(telegraphColor);
                 break;
 
             case HeartMonsterState.Charge:
-                stateTimer = chargeDuration;
-                HideTelegraph();
-                break;
-
-            case HeartMonsterState.Recover:
-                stateTimer = recoverDuration;
-                HideTelegraph();
-                rb.linearVelocity = Vector2.zero;
+                _stateTimer = chargeDuration;
+                SetTelegraphColor(chargeColor);
+                if (player)
+                {
+                    _chargeDirection = ((Vector2)(player.position - transform.position)).normalized;
+                }
                 break;
         }
     }
     
-    private void ShowTelegraph()
+    void SetTelegraphColor(Color color)
     {
-        if (telegraphArrow != null)
-            telegraphArrow.gameObject.SetActive(true);
+        if (telegraphArrowRenderer)
+        {
+            telegraphArrowRenderer.color = color;
+        }
     }
 
-    private void HideTelegraph()
+    void UpdateTelegraphVisual()
     {
-        if (telegraphArrow != null)
-            telegraphArrow.gameObject.SetActive(false);
+        if (!telegraphArrow) return;
+
+        telegraphArrow.up = _chargeDirection;
     }
 
-    private void UpdateTelegraphVisual()
+    public void ResetControllerState()
     {
-        if (telegraphArrow == null) return;
+        _chargeDirection = Vector2.zero;
+        _stateTimer = 0f;
 
-        telegraphArrow.up = chargeDirection;
+        if (rb)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+        
+        ChangeState(HeartMonsterState.Idle);
+        UpdateTelegraphVisual();
     }
 }
