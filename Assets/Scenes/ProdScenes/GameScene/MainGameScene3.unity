@@ -1187,10 +1187,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2471912649432765330, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473473309998021795, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748819321352142629, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
+      propertyPath: pointsPerSecond
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3748819321352142629, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
       propertyPath: MoodIconsManager
       value: 
       objectReference: {fileID: 187228297}
+    - target: {fileID: 3748819321352142629, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
+      propertyPath: maxTimeForBreaking
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748819321352142629, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
+      propertyPath: minTimeForBreaking
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4045057258732264464, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1232,13 +1252,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6431344682996793185, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
+      propertyPath: pointsPerSecond
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431344682996793185, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
       propertyPath: MoodIconsManager
       value: 
       objectReference: {fileID: 71285853}
+    - target: {fileID: 6431344682996793185, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
+      propertyPath: maxTimeForBreaking
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431344682996793185, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
+      propertyPath: minTimeForBreaking
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838995120072273447, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
+      propertyPath: pointsPerSecond
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6838995120072273447, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
       propertyPath: MoodIconsManager
       value: 
       objectReference: {fileID: 2142105152}
+    - target: {fileID: 6838995120072273447, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
+      propertyPath: maxTimeForBreaking
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838995120072273447, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
+      propertyPath: minTimeForBreaking
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8123875577316645559, guid: 89dff1299af378c41b18cf36716847a7, type: 3}
       propertyPath: m_Name
       value: GameEnvironment 1
@@ -1911,6 +1955,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 931629730}
+    - target: {fileID: 5678361783901121309, guid: 379944dd80565fc458e9ab4110fe077d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 931629730}
+    - target: {fileID: 5678361783901121309, guid: 379944dd80565fc458e9ab4110fe077d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRequestQuit
+      objectReference: {fileID: 0}
     - target: {fileID: 6397525831227103364, guid: 379944dd80565fc458e9ab4110fe077d, type: 3}
       propertyPath: m_Name
       value: MainMenu
