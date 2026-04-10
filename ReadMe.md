@@ -1,44 +1,36 @@
+<h1 align="center">🎮 Face the Arcade</h1>
 <div align="center">
-  <h1>🎮 Face the Arcade</h1>
   <a href="https://unity.com/">
-    <img src="https://img.shields.io/badge/Engine-Unity_3D-black?logo=unity" />
-  </a>
+    <img src="https://img.shields.io/badge/Engine-Unity_3D-black?logo=unity" /></a>
   <a href="https://unity.com/">
-    <img src="https://img.shields.io/badge/Unity-6.0-black?logo=unity" />
-  </a>
+    <img src="https://img.shields.io/badge/Unity-6.0-black?logo=unity" /></a>
   <a href="https://learn.microsoft.com/en-us/dotnet/csharp/">
-    <img src="https://img.shields.io/badge/Language-C%23-239120?logo=c-sharp&logoColor=white" />
-  </a>
-  <img src="https://img.shields.io/badge/Status-In_Development-yellow" />
+    <img src="https://img.shields.io/badge/Language-C%23-239120?logo=c-sharp&logoColor=white" /></a>
   <img src="https://img.shields.io/badge/ÉTS-LOG725-red" />
+  <a href="https://jamc8.itch.io/face-the-arcade">
+    <img src="https://img.shields.io/badge/Itch.io-white?logo=itch.io&logoColor=#FA5C5C" /></a>
   <hr />
 </div>
 
-## 👥 Auteurs
-
 <div align="center">
 
-**[BENDRISS Ibrahim](https://github.com/13Nass)**
+🎓 **École de technologie supérieure (ÉTS)**
 
-**[GONZALEZ Mauricio Lavady](https://github.com/InfinityColme1)**
+🎮 **LOG725 – Ingénierie et conception des jeux vidéo**
 
-**[MALDONADO Julian Andres](https://github.com/JAMC8)**
+**Instructors:** Alexandra Nemery & Loïc Cyr
 
-**[ZOLANA Isaac David](https://github.com/HiZackDavid)**
-
-🎓 École de technologie supérieure (ÉTS)
-
-LOG725 – Ingénierie et conception des jeux vidéo
+**Team Members:**  
+**[Mauricio Lavady Gonzalez](https://github.com/InfinityColme1)** • **[Ibrahim Bendriss](https://github.com/13Nass)** • **[Isaac David Zolana](https://github.com/HiZackDavid)** • **[Julian Andres Maldonado](https://github.com/JAMC8)**
 
 </div>
 
-## ℹ️ À propos du jeu
+## ℹ️ Overview
 
-« Face the Arcade » est un jeu qui combine la gestion d’une salle d’arcade avec des
-mini-jeux de type action et casse-tête qui se conclut avec un combat d’anomalie finale.
+**Face the Arcade** is an immersive experience where you play as an arcade manager. The game seamlessly transitions between 3D exploration and 2D action/puzzle mini-games through a diegetic interface system.
 
-Le jeu se déroule principalement dans une salle d’arcade 3D où le joueur se promène
-en première personne pour trouver des clients mécontents. Quant aux mini-jeux, ils
-ont lieu dans les interfaces virtuelles des machines défectueuses. Enfin, le combat
-contre l’anomalie finale se déroule dans une interface virtuelle avec une bataille de
-plateforme.
+### 🔄 The Gameplay Loop
+
+1.  **Observe:** Explore the 3D arcade to identify unhappy customers.
+2.  **Repair:** Dive into the virtual interface of malfunctioning machines.
+3.  **Resolve:** Beat the 2D mini-game to satisfy the client and earn points.
